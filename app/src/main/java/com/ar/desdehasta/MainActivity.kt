@@ -12,6 +12,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
@@ -30,6 +31,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var mOrigenLatLng: LatLng
     private lateinit var mDestinoLatLng: LatLng
+    private var mMarkerOrigen: Marker? = null
+    private var mMarkerDestino: Marker? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,7 +78,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 tvOrigen.text= getString(R.string.label_origen, place.address)
                 place.latLng?.let{
                     mOrigenLatLng=it
-                    addMarker(mOrigenLatLng,getString(R.string.macador_origen))
+                    setMarkerFrom(mOrigenLatLng)
                 }
             }
             return
@@ -85,7 +88,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 tvDestino.text= getString(R.string.label_destino, place.address)
                 place.latLng?.let{
                     mDestinoLatLng=it
-                    addMarker(mDestinoLatLng,getString(R.string.marcador_destino))
+                    setMarkerTo(mDestinoLatLng)
 
                 }
             }
@@ -120,20 +123,36 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        //zoom
+        mMap.setMinZoomPreference(15f)
+        mMap.setMaxZoomPreference(20f)
 
         // Add a marker in Sydney and move the camera
-        val ortBelgrano = LatLng(-34.5497773,-58.4541588)
-        addMarker(ortBelgrano, "ORT Belgrano")
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(ortBelgrano))
+        //val ortBelgrano = LatLng(-34.5497773,-58.4541588)
+        //addMarker(ortBelgrano, "ORT Belgrano")
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(ortBelgrano))
     }
 
-    private fun addMarker(latLng: LatLng, title:String){
+    private fun addMarker(latLng: LatLng, title:String): Marker{
 
             val markerOptions=MarkerOptions()
                 .position(latLng)
                 .title(title)
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
 
-        mMap.addMarker(markerOptions)
+        return mMap.addMarker(markerOptions)
+
+    }
+    private fun setMarkerFrom(latLng: LatLng){
+        mMarkerDestino?.remove()
+
+        mMarkerOrigen= addMarker(latLng,getString(R.string.macador_origen))
+
+    }
+    private fun setMarkerTo(latLng: LatLng){
+        mMarkerDestino?.remove()
+
+        mMarkerDestino= addMarker(latLng,getString(R.string.macador_origen))
 
     }
 }
