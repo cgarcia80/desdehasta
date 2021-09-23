@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">desdehasta</string>
+    <string name="api_key">AIzaSyDT4R_q6bMc_gFQpyY9AV4ka6wH3U_Pjec</string>
+
+    <string name="agregar">Agregar Direccion Origen</string>
+    <string name="destino">Direccion destino</string>
+    <string name="btn_origen">Origen</string>
+    <string name="btn_destino">Destino</string>
+    <string name="label_origen">Direccion de origen: %s1 </string>
+    <string name="label_destino">Direccion de destino: %s1 </string>
+    <string name="label_distancia">distancia</string>
+    <string name="label_tiempo">tiempo</string>
+    <string name="macador_origen">Origen</string>
+    <string name="marcador_destino">Destino</string>
+
+</resources>
