@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 tvDestino.text= getString(R.string.label_destino, place.address)
                 place.latLng?.let{
                     mDestinoLatLng=it
-                    setMarkerTo(mDestinoLatLng)
+                  //  setMarkerTo(mDestinoLatLng)
 
 
                     GoogleDirectionConfiguration.getInstance().isLogEnabled = BuildConfig.DEBUG
@@ -180,11 +180,14 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun onDirectionSuccess(direction: Direction?) {
         direction?.let {
            // showSnackbar(getString(R.string.success_with_status, direction.status))
+
+
             if (direction.isOK) {
                 val route = direction.routeList[0]
                 mMarkerOrigen?.remove()
-                googleMap?.addMarker(MarkerOptions().position(mOrigenLatLng))
                 mMarkerDestino?.remove()
+
+                googleMap?.addMarker(MarkerOptions().position(mOrigenLatLng))
                 googleMap?.addMarker(MarkerOptions().position(mDestinoLatLng))
                 val directionPositionList = route.legList[0].directionPoint
                 googleMap?.addPolyline(
@@ -192,9 +195,14 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                         this,
                         directionPositionList,
                         5,
-                        Color.RED
+                        Color.BLUE
                     )
                 )
+                lldistancia.text="Distancia " + (route.totalDistance/ 1000).toString() + " Kmts "
+                lltiempo.text= "Tiempo: " + (route.totalDuration / 60).toString() + " Min"
+
+                Log.i(TAG," ......cesarcesarcesar :-- ${ route.legList[0].distance}")
+
                 setCameraWithCoordinationBounds(route)
                 //binding.buttonRequestDirection.visibility = View.GONE
             } else {
