@@ -12,5 +12,7 @@
     <string name="label_tiempo">tiempo</string>
     <string name="macador_origen">Origen</string>
     <string name="marcador_destino">Destino</string>
+    <string name="success_with_empty">ok con resultado vacio</string>
+
 
 </resources>
