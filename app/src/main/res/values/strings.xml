@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">desdehasta</string>
-    <string name="api_key">AIzaSyDT4R_q6bMc_gFQpyY9AV4ka6wH3U_Pjec</string>
+    <string name="api_key">AIzaSyATmeZ6gpP4X6B1jfCeItUYsMKQopTelMY</string>
 
     <string name="agregar">Agregar Direccion Origen</string>
     <string name="destino">Direccion destino</string>
@@ -13,6 +13,8 @@
     <string name="macador_origen">Origen</string>
     <string name="marcador_destino">Destino</string>
     <string name="success_with_empty">ok con resultado vacio</string>
+    <string name="btnGardar">Guardar Circuito</string>
+    <string name="label_nombre_circuito">Nombre de Circuito</string>
 
 
 </resources>

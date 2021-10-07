@@ -3,9 +3,13 @@ package com.ar.desdehasta
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
+import android.view.View
+import android.widget.EditText
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.akexorcist.googledirection.GoogleDirection
 import com.akexorcist.googledirection.config.GoogleDirectionConfiguration
 import com.akexorcist.googledirection.constant.TransportMode
@@ -13,6 +17,7 @@ import com.akexorcist.googledirection.model.Direction
 import com.akexorcist.googledirection.model.Route
 import com.akexorcist.googledirection.util.DirectionConverter
 import com.akexorcist.googledirection.util.execute
+import com.ar.desdehasta.pojo.Circuito
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -27,28 +32,87 @@ import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_main.*
+import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_alta_circuito.*
+import kotlinx.android.synthetic.main.row_ciruitos.*
+import java.util.*
 
-class MainActivity : AppCompatActivity(), OnMapReadyCallback {
+
+class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
 
     companion object{
         private const val FROM_REQUEST_CODE_AUTOCOMPLETE = 1
         private const val TO_REQUEST_CODE_AUTOCOMPLETE = 2
-        private const val TAG = "MainActivity"
+        private const val TAG = "AltaCircuitoActivity"
     }
     private lateinit var googleMap: GoogleMap
-    private lateinit var mOrigenLatLng: LatLng
-    private lateinit var mDestinoLatLng: LatLng
+    private var mOrigenLatLng: LatLng? = null
+    private var mDestinoLatLng: LatLng? = null
     private var mMarkerOrigen: Marker? = null
     private var mMarkerDestino: Marker? = null
-
+    private var distancia: Double = .0
+    private var tiempo: Double = .0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_alta_circuito)
 
         setUpMap()
         setupPlaces()
+
+        Log.i("Prueba", "oncreate")
+
+
+       // btnGuardar.setOnClickListener{
+//        }
+
+    }
+    fun agregar(v:View){
+        Log.i("Prueba", "AGregar")
+
+        if(validar()){
+            Toast.makeText(this,"ingreso ok",Toast.LENGTH_SHORT).show()
+
+            val database = FirebaseDatabase.getInstance()
+            val myRef = database.getReference("Circuito")
+            var uid: String =UUID.randomUUID().toString()
+            var nombre: String = ti_nombreCircuito.text.toString()
+            val lat_ori: Double = mOrigenLatLng!!.latitude
+            val lng_ori: Double = mOrigenLatLng!!.longitude
+            val lat_dest: Double = mDestinoLatLng!!.latitude
+            val lng_dest: Double = mDestinoLatLng!!.longitude
+
+            Log.i("Prueba", distancia.toString() + tiempo.toString())
+
+            val data: Circuito= Circuito(uid,nombre,distancia,tiempo, lat_dest, lng_dest,lat_dest,lng_dest)
+            myRef.push().setValue(data)
+
+                //myRef.push().child("origen").setValue(mOrigenLatLng.toString())
+            //myRef.push().child("destino").setValue(mDestinoLatLng.toString())
+        }
+    }
+    private fun validar(): Boolean {
+        var retorno=true
+        if(ti_nombreCircuito.text.toString().isEmpty() ){
+            Log.i("Prueba", "validar")
+
+            ti_nombreCircuito.error = "Debe indicar un nombre de circuito!"
+            retorno=false
+        }
+        if(mOrigenLatLng?.latitude.toString().isEmpty() ){
+            Log.i("Prueba", "origen")
+
+            tvOrigen.setError("Debe indicar un Origen de circuito!")
+            retorno=false
+        }
+        if(mDestinoLatLng?.latitude.toString().isEmpty() ){
+            Log.i("Prueba", "origen")
+
+            tvDestino.setError("Debe indicar un Destino de circuito!")
+            retorno=false
+        }
+        return retorno
+
 
     }
     private fun setUpMap(){
@@ -69,10 +133,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             startAutoComplete(TO_REQUEST_CODE_AUTOCOMPLETE)
         }
     }
-    private  fun startAutoComplete(requestCode: Int ){
+    private  fun  startAutoComplete(requestCode: Int ){
         // Set the fields to specify which types of place data to
         // return after the user has made a selection.
-        val fields = listOf(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG, Place.Field.ADDRESS)
+        val fields = listOf(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG, Place.Field.ADDRESS )
 
         // Start the autocomplete intent.
         val intent = Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields)
@@ -81,12 +145,13 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        googleMap.clear()
         if (requestCode == FROM_REQUEST_CODE_AUTOCOMPLETE) {
             processAutoCompleteResult(resultCode,data ){ place ->
                 tvOrigen.text= getString(R.string.label_origen, place.address)
                 place.latLng?.let{
                     mOrigenLatLng=it
-                    setMarkerFrom(mOrigenLatLng)
+                    setMarkerFrom(it)
                 }
             }
             return
@@ -96,13 +161,12 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 tvDestino.text= getString(R.string.label_destino, place.address)
                 place.latLng?.let{
                     mDestinoLatLng=it
-                  //  setMarkerTo(mDestinoLatLng)
-
+                    setMarkerTo(it)
 
                     GoogleDirectionConfiguration.getInstance().isLogEnabled = BuildConfig.DEBUG
                     GoogleDirection.withServerKey(getString(R.string.api_key))
-                        .from(mOrigenLatLng)
-                        .to(mDestinoLatLng)
+                        .from(mOrigenLatLng!!)
+                        .to(mDestinoLatLng!!)
                         .transportMode(TransportMode.BICYCLING)
                         .execute(
                             onDirectionSuccess = { direction -> onDirectionSuccess(direction) },
@@ -165,7 +229,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun setMarkerFrom(latLng: LatLng){
 
         mMarkerOrigen?.remove()
-        mMarkerDestino?.remove()
         mMarkerOrigen= addMarker(latLng,getString(R.string.macador_origen))
 
     }
@@ -178,19 +241,21 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     private fun onDirectionSuccess(direction: Direction?) {
+
+
         direction?.let {
            // showSnackbar(getString(R.string.success_with_status, direction.status))
 
-
             if (direction.isOK) {
                 val route = direction.routeList[0]
+
                 mMarkerOrigen?.remove()
                 mMarkerDestino?.remove()
 
-                googleMap?.addMarker(MarkerOptions().position(mOrigenLatLng))
-                googleMap?.addMarker(MarkerOptions().position(mDestinoLatLng))
+                googleMap.addMarker(MarkerOptions().position(mOrigenLatLng!!))
+                googleMap.addMarker(MarkerOptions().position(mDestinoLatLng!!))
                 val directionPositionList = route.legList[0].directionPoint
-                googleMap?.addPolyline(
+                googleMap.addPolyline(
                     DirectionConverter.createPolyline(
                         this,
                         directionPositionList,
@@ -198,10 +263,14 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                         Color.BLUE
                     )
                 )
-                lldistancia.text="Distancia " + (route.totalDistance/ 1000).toString() + " Kmts "
-                lltiempo.text= "Tiempo: " + (route.totalDuration / 60).toString() + " Min"
 
-                Log.i(TAG," ......cesarcesarcesar :-- ${ route.legList[0].distance}")
+                distancia= (route.totalDistance/ 1000).toDouble()
+                tiempo=  (route.totalDuration / 60).toDouble()
+
+                lldistancia.text="Distancia " + distancia.toString() + " Kmts "
+                lltiempo.text= "Tiempo: " +tiempo.toString() + " Min"
+
+                //Log.i("Data distancia y tiempo"," ..... :-- ${ route.legList[0].distance}")
 
                 setCameraWithCoordinationBounds(route)
                 //binding.buttonRequestDirection.visibility = View.GONE
@@ -216,11 +285,12 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun onDirectionFailure(t: Throwable) {
         showSnackbar(t.message)
     }
+
     private fun setCameraWithCoordinationBounds(route: Route) {
         val southwest = route.bound.southwestCoordination.coordination
         val northeast = route.bound.northeastCoordination.coordination
         val bounds = LatLngBounds(southwest, northeast)
-        googleMap?.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100))
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100))
     }
 
     private fun showSnackbar(message: String?) {
