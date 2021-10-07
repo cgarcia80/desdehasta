@@ -2,6 +2,7 @@ package com.ar.desdehasta;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SearchView;
@@ -75,8 +76,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                buscar(s);
+                return true;
+            }
+        });
 
 
+    }//fin
+    private void buscar(String s) {
 
+        ArrayList<Circuito> milista=new ArrayList<>();
+        for (Circuito obj: list  ) {
+            if(obj.getNombre().toLowerCase().contains(s.toLowerCase())){
+                milista.add(obj);
+                Log.i("busqueda","aca for"+obj.getNombre().toString());
+
+            }
+        }
+        AdapterCircuito adapter=new AdapterCircuito(milista);
+        rv.setAdapter(adapter);
     }
 }
