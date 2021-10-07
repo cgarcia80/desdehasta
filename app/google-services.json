@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "278010834147",
+    "firebase_url": "https://proyectosort-1632084598325-default-rtdb.firebaseio.com",
+    "project_id": "proyectosort-1632084598325",
+    "storage_bucket": "proyectosort-1632084598325.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278010834147:android:1a8308a3493fffee65a9d6",
+        "android_client_info": {
+          "package_name": "com.ar.desdehasta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278010834147-plu9vjbhb9cd5c0aun0dfm9tt6lck87a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ar.desdehasta",
+            "certificate_hash": "e7795b711887a229b0d58d7065f27b6356ffb9d1"
+          }
+        },
+        {
+          "client_id": "278010834147-abqjtp858kju6u6ev3ulpk7i9qrksir8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa26uysOmf2s-TZpyYyFmZ-7F6vFvqhKw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278010834147-08o10opo3182c3l8l1dhvoberp72jdue.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
