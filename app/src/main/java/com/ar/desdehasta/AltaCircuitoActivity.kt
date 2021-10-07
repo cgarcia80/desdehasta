@@ -4,10 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
 import android.view.View
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.akexorcist.googledirection.GoogleDirection
@@ -34,7 +32,6 @@ import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_alta_circuito.*
-import kotlinx.android.synthetic.main.row_ciruitos.*
 import java.util.*
 
 
@@ -87,6 +84,8 @@ class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
             val data: Circuito= Circuito(uid,nombre,distancia,tiempo, lat_dest, lng_dest,lat_dest,lng_dest)
             myRef.push().setValue(data)
 
+            val intent = Intent(v.context, MainActivity::class.java)
+            startActivityForResult(intent, 0)
                 //myRef.push().child("origen").setValue(mOrigenLatLng.toString())
             //myRef.push().child("destino").setValue(mDestinoLatLng.toString())
         }
@@ -99,15 +98,16 @@ class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
             ti_nombreCircuito.error = "Debe indicar un nombre de circuito!"
             retorno=false
         }
-        if(mOrigenLatLng?.latitude.toString().isEmpty() ){
+        if(tvOrigen.toString().isEmpty() ){
             Log.i("Prueba", "origen")
-
+            tvOrigen.requestFocus()
             tvOrigen.setError("Debe indicar un Origen de circuito!")
             retorno=false
         }
-        if(mDestinoLatLng?.latitude.toString().isEmpty() ){
+        if(tvDestino.toString().isEmpty() ){
             Log.i("Prueba", "origen")
 
+            tvDestino.requestFocus()
             tvDestino.setError("Debe indicar un Destino de circuito!")
             retorno=false
         }
