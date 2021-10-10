@@ -1,13 +1,16 @@
 package com.ar.desdehasta
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.akexorcist.googledirection.BuildConfig
 import com.akexorcist.googledirection.GoogleDirection
 import com.akexorcist.googledirection.config.GoogleDirectionConfiguration
 import com.akexorcist.googledirection.constant.TransportMode
@@ -59,10 +62,6 @@ class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
 
         Log.i("Prueba", "oncreate")
 
-
-       // btnGuardar.setOnClickListener{
-//        }
-
     }
     fun agregar(v:View){
         Log.i("Prueba", "AGregar")
@@ -81,7 +80,7 @@ class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
 
             Log.i("Prueba", distancia.toString() + tiempo.toString())
 
-            val data: Circuito= Circuito(uid,nombre,distancia,tiempo, lat_dest, lng_dest,lat_dest,lng_dest)
+            val data: Circuito= Circuito(uid,nombre,distancia,tiempo, lat_ori, lng_ori,lat_dest,lng_dest)
             myRef.push().setValue(data)
 
             val intent = Intent(v.context, MainActivity::class.java)
@@ -93,8 +92,6 @@ class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun validar(): Boolean {
         var retorno=true
         if(ti_nombreCircuito.text.toString().isEmpty() ){
-            Log.i("Prueba", "validar")
-
             ti_nombreCircuito.error = "Debe indicar un nombre de circuito!"
             retorno=false
         }
@@ -117,9 +114,14 @@ class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
     }
     private fun setUpMap(){
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        val mapFragment = supportFragmentManager
+        val mapFragment = (supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment).getMapAsync { googleMap ->
+            this.googleMap = googleMap
+        }
+       /*
+       val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        */
     }
 
     private fun setupPlaces(){
@@ -209,11 +211,11 @@ class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
         //zoom
         this.googleMap.setMinZoomPreference(15f)
         this.googleMap.setMaxZoomPreference(20f)
+        googleMap.getUiSettings().setCompassEnabled(true);
 
         // Add a marker in Sydney and move the camera
-        //val ortBelgrano = LatLng(-34.5497773,-58.4541588)
-        //addMarker(ortBelgrano, "ORT Belgrano")
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(ortBelgrano))
+        val ortBelgrano = LatLng(-34.5497773,-58.4541588)
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(ortBelgrano))
     }
 
     private fun addMarker(latLng: LatLng, title:String): Marker{

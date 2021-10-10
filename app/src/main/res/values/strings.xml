@@ -15,6 +15,8 @@
     <string name="success_with_empty">ok con resultado vacio</string>
     <string name="btnGardar">Guardar Circuito</string>
     <string name="label_nombre_circuito">Nombre de Circuito</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="success_with_status">Circuito ok</string>
 
 
 </resources>

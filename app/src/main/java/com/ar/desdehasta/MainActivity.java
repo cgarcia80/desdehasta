@@ -2,7 +2,6 @@ package com.ar.desdehasta;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SearchView;
@@ -24,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterCircuito.RecyclerItemClick {
     DatabaseReference ref;
     ArrayList<Circuito> list;
     RecyclerView rv;
@@ -53,8 +52,9 @@ public class MainActivity extends AppCompatActivity {
         lm=new LinearLayoutManager(this);
         rv.setLayoutManager(lm);
         list= new ArrayList<>();
-        adapter= new AdapterCircuito(list);
+        adapter= new AdapterCircuito(list,this);
         rv.setAdapter(adapter);
+
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -97,11 +97,16 @@ public class MainActivity extends AppCompatActivity {
         for (Circuito obj: list  ) {
             if(obj.getNombre().toLowerCase().contains(s.toLowerCase())){
                 milista.add(obj);
-                Log.i("busqueda","aca for"+obj.getNombre().toString());
-
             }
         }
-        AdapterCircuito adapter=new AdapterCircuito(milista);
+        AdapterCircuito adapter=new AdapterCircuito(milista,this);
         rv.setAdapter(adapter);
+    }
+
+    @Override
+    public void itemClick(Circuito item) {
+        Intent intent = new Intent(this, DetalleCircuito.class);
+        intent.putExtra("Detalle Circuito", item);
+        startActivity(intent);
     }
 }

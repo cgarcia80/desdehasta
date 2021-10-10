@@ -1,6 +1,8 @@
 package com.ar.desdehasta.pojo;
 
-public class Circuito {
+import java.io.Serializable;
+
+public class Circuito implements Serializable {
         private String uid;
         private String nombre;
         private double kilometros;
@@ -23,14 +25,7 @@ public class Circuito {
     }
 
 
-    public Circuito(String nombre, double kilometros, double tiempo, double latitude_ori, double longitude_ori) {
-        this.nombre = nombre;
-        this.kilometros = kilometros;
-        this.tiempo = tiempo;
-        this.longitude_ori = latitude_ori;
-        this.latitude_ori = longitude_ori;
-    }
-    public Circuito() {}
+     public Circuito() {}
 
     public String getNombre() {
         return nombre;
