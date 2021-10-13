@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context=".ListadoCircuitosActivity" >
+
+<Button
+    android:id="@+id/cargarmapa"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Agregar Circuito" />
+
+<SearchView
+    android:id="@+id/search"
+    android:layout_width="match_parent"
+    android:layout_height="25dp"
+    android:layout_margin="10dp">
+
+</SearchView>
+
+
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rv"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="5dp">
+
+</androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "278010834147-00hdp9jffuu57h3jtu7gi4u49cfafp7n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ar.desdehasta",
+            "certificate_hash": "4d3a91bafdb2ab4e886b5c1bcbf7b7505bafe039"
+          }
+        },
+        {
           "client_id": "278010834147-plu9vjbhb9cd5c0aun0dfm9tt6lck87a.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

@@ -17,6 +17,7 @@
     <string name="label_nombre_circuito">Nombre de Circuito</string>
     <string name="title_activity_maps">Map</string>
     <string name="success_with_status">Circuito ok</string>
+    <string name="sign_out">salir</string>
 
 
 </resources>

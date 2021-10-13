@@ -12,7 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ar.desdehasta.adapter.AdapterCircuito;
+import com.ar.desdehasta.databinding.ActivityMainBinding;
 import com.ar.desdehasta.pojo.Circuito;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,90 +29,77 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements AdapterCircuito.RecyclerItemClick {
-    DatabaseReference ref;
-    ArrayList<Circuito> list;
-    RecyclerView rv;
-    SearchView searchView;
-    AdapterCircuito adapter;
-    LinearLayoutManager lm;
+/* */
+public class MainActivity extends AppCompatActivity {
+    public static final String ANONYMOUS = "anonymous";
+
+    private GoogleSignInClient mSignInClient;
+
+    private ActivityMainBinding mBinding;
+
+    private FirebaseAuth mFirebaseAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        mBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
+        mBinding.signOut.setOnClickListener(v -> signOut());
+        // Initialize Firebase Auth and check if the user is signed in
+        mFirebaseAuth = FirebaseAuth.getInstance();
 
-        Button info = findViewById(R.id.cargarmapa);
-        info.setOnClickListener(new View.OnClickListener() {
+        Button circuitos = findViewById(R.id.btnCircuitos);
+        circuitos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (v.getContext(), AltaCircuitoActivity.class);
+                Intent intent = new Intent(v.getContext(), ListadoCircuitosActivity.class);
                 startActivityForResult(intent, 0);
             }
         });
 
-
-        ref=FirebaseDatabase.getInstance().getReference().child("Circuito");
-        rv= findViewById(R.id.rv);
-        searchView=findViewById(R.id.search);
-        lm=new LinearLayoutManager(this);
-        rv.setLayoutManager(lm);
-        list= new ArrayList<>();
-        adapter= new AdapterCircuito(list,this);
-        rv.setAdapter(adapter);
-
-
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                        Circuito circuito = snapshot.getValue(Circuito.class);
-                        list.add(circuito);
-
-                    }
-                    adapter.notifyDataSetChanged();
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-            }
-        });
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                buscar(s);
-                return true;
-            }
-        });
-
-
-    }//fin
-    private void buscar(String s) {
-
-        ArrayList<Circuito> milista=new ArrayList<>();
-        for (Circuito obj: list  ) {
-            if(obj.getNombre().toLowerCase().contains(s.toLowerCase())){
-                milista.add(obj);
-            }
+        if (mFirebaseAuth.getCurrentUser() == null) {
+            // Not signed in, launch the Sign In activity
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+            return;
         }
-        AdapterCircuito adapter=new AdapterCircuito(milista,this);
-        rv.setAdapter(adapter);
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        mSignInClient = GoogleSignIn.getClient(this, gso);
+       // setProfile();
+
+    }
+/*
+    private void setProfile() {
+        Glide.with(this).load(getUserPhotoUrl()).into(mBinding.profileImage);
+        mBinding.profileName.setText(getUserName());
+    }*/
+
+    private void signOut() {
+        mFirebaseAuth.signOut();
+        mSignInClient.signOut();
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 
-    @Override
-    public void itemClick(Circuito item) {
-        Intent intent = new Intent(this, DetalleCircuito.class);
-        intent.putExtra("Detalle Circuito", item);
-        startActivity(intent);
+    private String getUserPhotoUrl() {
+        FirebaseUser user = mFirebaseAuth.getCurrentUser();
+        if (user != null && user.getPhotoUrl() != null) {
+            return user.getPhotoUrl().toString();
+        }
+        return null;
+    }
+
+    private String getUserName() {
+        FirebaseUser user = mFirebaseAuth.getCurrentUser();
+        if (user != null) {
+            return user.getDisplayName();
+        }
+
+        return ANONYMOUS;
     }
 }

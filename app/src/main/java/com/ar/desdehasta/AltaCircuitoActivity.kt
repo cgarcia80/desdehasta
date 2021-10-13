@@ -83,7 +83,7 @@ class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
             val data: Circuito= Circuito(uid,nombre,distancia,tiempo, lat_ori, lng_ori,lat_dest,lng_dest)
             myRef.push().setValue(data)
 
-            val intent = Intent(v.context, MainActivity::class.java)
+            val intent = Intent(v.context, ListadoCircuitosActivity::class.java)
             startActivityForResult(intent, 0)
                 //myRef.push().child("origen").setValue(mOrigenLatLng.toString())
             //myRef.push().child("destino").setValue(mDestinoLatLng.toString())
