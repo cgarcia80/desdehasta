@@ -76,8 +76,8 @@ class DetalleCircuito : AppCompatActivity() {
     private fun initValues() {
         circuito = intent.extras!!.getSerializable("Detalle Circuito") as Circuito?
         nombre?.setText(circuito!!.nombre)
-        kilometros?.setText(circuito!!.kilometros.toString())
-        tiempo?.setText(circuito!!.tiempo.toString())
+        kilometros?.setText(circuito!!.kilometros.toString() + " Kmt's")
+        tiempo?.setText(circuito!!.tiempo.toString() + " min")
     }
 
     private fun onDirectionSuccess(direction: Direction?) {

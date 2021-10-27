@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Desdehasta">
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".AltaGrupoActivity"></activity>
+        <activity android:name=".AltaPersonasActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".ListadoCircuitosActivity" />
         <activity android:name=".AltaCircuitoActivity" />
         <activity android:name=".DetalleCircuito" />

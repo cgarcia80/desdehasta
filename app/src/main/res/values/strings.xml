@@ -3,7 +3,7 @@
     <string name="api_key">AIzaSyATmeZ6gpP4X6B1jfCeItUYsMKQopTelMY</string>
 
     <string name="agregar">Agregar Direccion Origen</string>
-    <string name="destino">Direccion destino</string>
+    <string name="destino">Agregar Direccion Destino</string>
     <string name="btn_origen">Origen</string>
     <string name="btn_destino">Destino</string>
     <string name="label_origen">Direccion de origen: %s1 </string>
@@ -14,10 +14,12 @@
     <string name="marcador_destino">Destino</string>
     <string name="success_with_empty">ok con resultado vacio</string>
     <string name="btnGardar">Guardar Circuito</string>
-    <string name="label_nombre_circuito">Nombre de Circuito</string>
+    <string name="label_nombre_circuito">Agregue Nombre De Circuito</string>
     <string name="title_activity_maps">Map</string>
     <string name="success_with_status">Circuito ok</string>
     <string name="sign_out">salir</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

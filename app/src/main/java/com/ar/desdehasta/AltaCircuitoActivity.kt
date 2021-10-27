@@ -81,7 +81,9 @@ class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
             Log.i("Prueba", distancia.toString() + tiempo.toString())
 
             val data: Circuito= Circuito(uid,nombre,distancia,tiempo, lat_ori, lng_ori,lat_dest,lng_dest)
-            myRef.push().setValue(data)
+            //myRef.push().setValue(data)
+            myRef.child(uid).setValue(data);
+
 
             val intent = Intent(v.context, ListadoCircuitosActivity::class.java)
             startActivityForResult(intent, 0)
@@ -213,7 +215,7 @@ class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
         this.googleMap.setMaxZoomPreference(20f)
         googleMap.getUiSettings().setCompassEnabled(true);
 
-        // Add a marker in Sydney and move the camera
+
         val ortBelgrano = LatLng(-34.5497773,-58.4541588)
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(ortBelgrano))
     }
