@@ -1,11 +1,15 @@
 package com.ar.desdehasta;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.ar.desdehasta.databinding.ActivityMainBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -15,26 +19,53 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 /* */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
     public static final String ANONYMOUS = "anonymous";
-
     private GoogleSignInClient mSignInClient;
-
     private ActivityMainBinding mBinding;
-
     private FirebaseAuth mFirebaseAuth;
-
+    private LinearLayout circuitos;
+    private LinearLayout grupos;
+    private LinearLayout interes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
-        mBinding.signOut.setOnClickListener(v -> signOut());
+
+        circuitos=findViewById(R.id.layout1);
+        grupos=findViewById(R.id.layout2);
+        interes=findViewById(R.id.layout3);
+
+        circuitos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ListadoCircuitosActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+
+        grupos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), AltaGrupoActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+        interes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), AltaPersonasActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+
+       //mBinding.signOut.setOnClickListener(v -> signOut());
         // Initialize Firebase Auth and check if the user is signed in
         mFirebaseAuth = FirebaseAuth.getInstance();
 
-        Button circuitos = findViewById(R.id.btnCircuitos);
+/*        Button circuitos = findViewById(R.id.btnCircuitos);
         circuitos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(v.getContext(), AltaPersonasActivity.class);
                 startActivityForResult(intent, 0);
             }
-        });
+        });*/
 
         if (mFirebaseAuth.getCurrentUser() == null) {
             // Not signed in, launch the Sign In activity
@@ -96,4 +127,6 @@ public class MainActivity extends AppCompatActivity {
 
         return ANONYMOUS;
     }
+
+
 }

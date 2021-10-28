@@ -66,7 +66,7 @@ public class AltaPersonasActivity extends AppCompatActivity {
     }
 
     private void listarDatos() {
-        databaseReference.child("Grupos").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Personas").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listPerson.clear();
@@ -89,7 +89,7 @@ public class AltaPersonasActivity extends AppCompatActivity {
     private void inicializarFirebase() {
         FirebaseApp.initializeApp(this);
         firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseDatabase.setPersistenceEnabled(true);
+        //firebaseDatabase.setPersistenceEnabled(true);
         databaseReference = firebaseDatabase.getReference();
     }
 
@@ -119,7 +119,7 @@ public class AltaPersonasActivity extends AppCompatActivity {
                     p.setApellido(app);
                     p.setCorreo(correo);
                     p.setPassword(password);
-                    databaseReference.child("Grupos").child(p.getUid()).setValue(p);
+                    databaseReference.child("Personas").child(p.getUid()).setValue(p);
                     //databaseReference.push().setValue(p);
                     Toast.makeText(this, "Agregado", Toast.LENGTH_LONG).show();
                     limpiarCajas();
@@ -137,7 +137,7 @@ public class AltaPersonasActivity extends AppCompatActivity {
                 p.setApellido(appP.getText().toString().trim());
                 p.setCorreo(correoP.getText().toString().trim());
                 p.setPassword(passwordP.getText().toString().trim());
-                databaseReference.child("Grupos").child(p.getUid()).setValue(p);
+                databaseReference.child("Personas").child(p.getUid()).setValue(p);
                 Toast.makeText(this,"Actualizado", Toast.LENGTH_LONG).show();
                 limpiarCajas();
                 }
@@ -146,7 +146,7 @@ public class AltaPersonasActivity extends AppCompatActivity {
             case R.id.icon_delete:{
                 Persona p = new Persona();
                 p.setUid(personaSelected.getUid());
-                databaseReference.child("Grupos").child(p.getUid()).removeValue();
+                databaseReference.child("Personas").child(p.getUid()).removeValue();
                 Toast.makeText(this,"Eliminado", Toast.LENGTH_LONG).show();
                 limpiarCajas();
                 break;

@@ -2,8 +2,8 @@ package com.ar.desdehasta.pojo;
 
 public class Grupo {
     private String uid;
-    private String nombre;
-    private String circuito;
+    private String Nombre;
+    private String Circuito;
 
 
     public String getUid() {
@@ -15,19 +15,19 @@ public class Grupo {
     }
 
     public String getNombre() {
-        return nombre;
+        return Nombre;
     }
 
     public void setNombre(String nombre) {
-        nombre = nombre;
+        Nombre = nombre;
     }
 
     public String getCircuito() {
-        return circuito;
+        return Circuito;
     }
 
     public void setCircuito(String circuito) {
-        circuito = circuito;
+        Circuito = circuito;
     }
 
 

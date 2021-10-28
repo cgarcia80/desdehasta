@@ -11,43 +11,30 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre">
+        android:hint="Nombre de grupo">
 
         <EditText
             android:id="@+id/txt_nombreGrupo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:paddingTop="15dp"/>
+
+            android:inputType="text"
+            android:paddingTop="15dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Apellidos">
+        android:hint="Circuitos">
 
         <EditText
-            android:id="@+id/txt_appPersona"
+            android:id="@+id/txt_Circuitos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:paddingTop="15dp"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Correo">
-
-        <EditText
-            android:id="@+id/txt_circuitos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textEmailAddress"
-            android:paddingTop="15dp"/>
+            android:inputType="text"
+            android:paddingTop="15dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
