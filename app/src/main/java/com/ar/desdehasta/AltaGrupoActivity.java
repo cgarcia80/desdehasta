@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.ar.desdehasta.pojo.Grupo;
@@ -20,7 +21,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +41,9 @@ public class AltaGrupoActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     Grupo grupoSelected;
 
+    private Spinner spinner;
+    private ArrayList<String> arrayList =new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +51,12 @@ public class AltaGrupoActivity extends AppCompatActivity {
 
         nombreGrupo = findViewById(R.id.txt_nombreGrupo);
         circuito = findViewById(R.id.txt_Circuitos);
-
+        spinner= findViewById(R.id.spinner);
 
         listV_Grupos = findViewById(R.id.lv_datosgrupos);
         inicializarFirebase();
         listarDatos();
+        showDataSpinner();
 
         listV_Grupos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -60,6 +68,46 @@ public class AltaGrupoActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void showDataSpinner() {
+        databaseReference.child("Circuito").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                arrayList.clear();
+                arrayList.add("_");
+                for (DataSnapshot item: snapshot.getChildren()){
+                    String nombre=item.child("nombre").getValue(String.class);
+                    int kilometros=item.child("kilometros").getValue(Integer.class);
+                    String uid=item.child("uid").getValue(String.class);
+                    arrayList.add(nombre + " --> Cant Kilometros: "+(String.valueOf(kilometros))+ " |"+ uid );
+                }
+                ArrayAdapter<String> arrayAdapter =new ArrayAdapter<>(AltaGrupoActivity.this,R.layout.style_spinner,arrayList);
+                arrayAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
+                spinner.setAdapter(arrayAdapter);
+
+                spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        String item = parent.getSelectedItem().toString();
+                        String s =item;
+                        String s2 = s.substring(s.indexOf("|")+1);
+                        circuito.setText(s2);
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void listarDatos() {

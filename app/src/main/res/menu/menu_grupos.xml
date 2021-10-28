@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/icon_add"
-        android:icon="@drawable/ic_add"
+        android:icon="@drawable/add_friend_member_people_plus_icon"
         android:title="Edit Done"
         app:showAsAction="always" />
 
     <item android:id="@+id/icon_save"
-        android:icon="@drawable/ic_save"
+        android:icon="@drawable/change_edit_pencil_creative_design_icon_chico"
         android:title="Edit Done"
         app:showAsAction="always" />
 
