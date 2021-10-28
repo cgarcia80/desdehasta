@@ -22,21 +22,24 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity{
     public static final String ANONYMOUS = "anonymous";
     private GoogleSignInClient mSignInClient;
-    private ActivityMainBinding mBinding;
+    //private ActivityMainBinding mBinding;
     private FirebaseAuth mFirebaseAuth;
     private LinearLayout circuitos;
     private LinearLayout grupos;
     private LinearLayout interes;
-
+    private LinearLayout salir;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(mBinding.getRoot());
+        setContentView(R.layout.activity_main);
+        //mBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        //setContentView(mBinding.getRoot());
+
 
         circuitos=findViewById(R.id.layout1);
         grupos=findViewById(R.id.layout2);
         interes=findViewById(R.id.layout3);
+        salir=findViewById(R.id.layout5);
 
         circuitos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +64,7 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-       //mBinding.signOut.setOnClickListener(v -> signOut());
+        salir.setOnClickListener(v -> signOut());
         // Initialize Firebase Auth and check if the user is signed in
         mFirebaseAuth = FirebaseAuth.getInstance();
 

@@ -165,7 +165,7 @@
                  android:layout_margin="8dp"
                  android:contentDescription="Circuitos"
                  android:padding="8dp"
-                 android:src="@drawable/bag_case_handbag_purse_shopping_icon"/>
+                 android:src="@drawable/massage_chatting_texting_interesting_icon"/>
 
              <TextView
                  android:layout_width="match_parent"
@@ -180,6 +180,39 @@
 
 
 
+
+         <LinearLayout
+             android:id="@+id/layout5"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="22dp"
+             android:background="@color/white"
+             android:gravity="center"
+             android:orientation="vertical"
+             android:padding="15dp"
+             app:layout_constraintDimensionRatio="H, 1:1"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintEnd_toStartOf="@id/layout4"
+             app:layout_constraintTop_toBottomOf="@id/layout3">
+
+             <ImageView
+                 android:layout_width="100dp"
+                 android:layout_height="100dp"
+                 android:layout_margin="8dp"
+                 android:contentDescription="Salir"
+                 android:padding="8dp"
+                 android:src="@drawable/door_exit_logout_mail_out_icon" />
+
+             <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:gravity="center"
+                 android:text="Salir"
+                 android:textColor="#333333"
+                 android:textSize="20sp"
+                 android:textStyle="bold" />
+
+         </LinearLayout>
 
      </androidx.constraintlayout.widget.ConstraintLayout>
 
