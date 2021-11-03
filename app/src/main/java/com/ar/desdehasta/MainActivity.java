@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity{
     private FirebaseAuth mFirebaseAuth;
     private LinearLayout circuitos;
     private LinearLayout grupos;
+    private LinearLayout agenda;
     private LinearLayout interes;
     private LinearLayout salir;
     @Override
@@ -38,7 +39,8 @@ public class MainActivity extends AppCompatActivity{
 
         circuitos=findViewById(R.id.layout1);
         grupos=findViewById(R.id.layout2);
-        interes=findViewById(R.id.layout3);
+        agenda=findViewById(R.id.layout3);
+        interes=findViewById(R.id.layout4);
         salir=findViewById(R.id.layout5);
 
         circuitos.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +65,13 @@ public class MainActivity extends AppCompatActivity{
                 startActivityForResult(intent, 0);
             }
         });
-
+        agenda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), AgendaCircuitosActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
         salir.setOnClickListener(v -> signOut());
         // Initialize Firebase Auth and check if the user is signed in
         mFirebaseAuth = FirebaseAuth.getInstance();

@@ -78,9 +78,11 @@ public class AltaGrupoActivity extends AppCompatActivity {
                 arrayList.add("_");
                 for (DataSnapshot item: snapshot.getChildren()){
                     String nombre=item.child("nombre").getValue(String.class);
-                    int kilometros=item.child("kilometros").getValue(Integer.class);
+                   // int kilometros=item.child("kilometros").getValue(Integer.class);
                     String uid=item.child("uid").getValue(String.class);
-                    arrayList.add(nombre + " --> Cant Kilometros: "+(String.valueOf(kilometros))+ " |"+ uid );
+                    //arrayList.add(nombre + " --> Cant Kilometros: "+(String.valueOf(kilometros))+ " |"+ uid );
+                    arrayList.add(nombre + "|"+ uid );
+
                 }
                 ArrayAdapter<String> arrayAdapter =new ArrayAdapter<>(AltaGrupoActivity.this,R.layout.style_spinner,arrayList);
                 arrayAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
