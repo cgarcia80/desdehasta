@@ -40,6 +40,8 @@ import java.util.*
 
 class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
 
+
+
     companion object{
         private const val FROM_REQUEST_CODE_AUTOCOMPLETE = 1
         private const val TO_REQUEST_CODE_AUTOCOMPLETE = 2
@@ -57,12 +59,34 @@ class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alta_circuito)
 
+        //etPlannedDate.setOnClickListener { showDatePickerDialog() }
+        //etTime.setOnClickListener { showTimePickerDialog() }
+
         setUpMap()
         setupPlaces()
 
         Log.i("Prueba", "oncreate")
 
     }
+
+    /*private fun showTimePickerDialog() {
+        val timePicker = TimePickerFragment {onTimeSelect(it)}
+        timePicker.show(supportFragmentManager, "time")
+    }
+
+    private fun onTimeSelect(time:String){
+        etTime.setText("$time")
+    }
+
+    private fun showDatePickerDialog() {
+        val datePicker = DatePickerFragment{day,month,year -> onDateSelected(day,month,year)}
+        datePicker.show(supportFragmentManager,"datePicker")
+    }
+
+    fun onDateSelected(day:Int, month:Int, year:Int){
+        etPlannedDate.setText("$day/$month/$year")
+    }*/
+
     fun agregar(v:View){
         Log.i("Prueba", "AGregar")
 
@@ -91,6 +115,7 @@ class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
             //myRef.push().child("destino").setValue(mDestinoLatLng.toString())
         }
     }
+
     private fun validar(): Boolean {
         var retorno=true
         if(ti_nombreCircuito.text.toString().isEmpty() ){
@@ -114,6 +139,7 @@ class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     }
+
     private fun setUpMap(){
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = (supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment).getMapAsync { googleMap ->
@@ -137,6 +163,7 @@ class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
             startAutoComplete(TO_REQUEST_CODE_AUTOCOMPLETE)
         }
     }
+
     private  fun  startAutoComplete(requestCode: Int ){
         // Set the fields to specify which types of place data to
         // return after the user has made a selection.
@@ -230,19 +257,20 @@ class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
         return googleMap.addMarker(markerOptions)
 
     }
+
     private fun setMarkerFrom(latLng: LatLng){
 
         mMarkerOrigen?.remove()
         mMarkerOrigen= addMarker(latLng,getString(R.string.macador_origen))
 
     }
+
     private fun setMarkerTo(latLng: LatLng){
         mMarkerDestino?.remove()
 
         mMarkerDestino= addMarker(latLng,getString(R.string.macador_origen))
 
     }
-
 
     private fun onDirectionSuccess(direction: Direction?) {
 

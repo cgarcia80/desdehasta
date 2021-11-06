@@ -3,10 +3,13 @@ package com.ar.desdehasta;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -17,6 +20,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.UUID;
 
 /* */
 public class MainActivity extends AppCompatActivity{
@@ -41,7 +46,7 @@ public class MainActivity extends AppCompatActivity{
         grupos=findViewById(R.id.layout2);
         agenda=findViewById(R.id.layout3);
         interes=findViewById(R.id.layout4);
-        salir=findViewById(R.id.layout5);
+        //salir=findViewById(R.id.layout5);
 
         circuitos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +77,8 @@ public class MainActivity extends AppCompatActivity{
                 startActivityForResult(intent, 0);
             }
         });
-        salir.setOnClickListener(v -> signOut());
+
+        //salir.setOnClickListener(v -> signOut());
         // Initialize Firebase Auth and check if the user is signed in
         mFirebaseAuth = FirebaseAuth.getInstance();
 
@@ -139,5 +145,23 @@ public class MainActivity extends AppCompatActivity{
         return ANONYMOUS;
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_inicio,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.logout:
+                Toast.makeText(this, "Cerrado", Toast.LENGTH_SHORT).show();
+                signOut();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
 }

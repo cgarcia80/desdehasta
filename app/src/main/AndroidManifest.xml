@@ -13,16 +13,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Desdehasta">
-        <activity android:name=".AgendaCircuitosActivity"></activity>
+        <activity
+            android:name=".AgendaCircuitosActivity"
+            android:label="@string/agendar_circuitos">
+        </activity>
         <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar" -->
-        <activity android:name=".AltaGrupoActivity" />
-        <activity android:name=".AltaPersonasActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".ListadoCircuitosActivity" />
-        <activity android:name=".AltaCircuitoActivity" />
-        <activity android:name=".DetalleCircuito" />
+        <activity
+            android:name=".AltaGrupoActivity"
+            android:label="@string/alta_grupo"/>
+        <activity
+            android:name=".AltaPersonasActivity" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/inicio_sesion"/>
+        <activity
+            android:name=".ListadoCircuitosActivity"
+            android:label="@string/circuitos"/>
+        <activity
+            android:name=".AltaCircuitoActivity"
+            android:label="@string/crear_circuito"/>
+        <activity
+            android:name=".DetalleCircuito" />
         <activity
             android:name=".MainActivity"
+            android:label="@string/inicio"
             tools:ignore="Instantiatable">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
