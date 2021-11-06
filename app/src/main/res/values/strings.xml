@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">desdehasta</string>
+    <string name="app_name">Desde-Hasta</string>
     <string name="api_key">AIzaSyATmeZ6gpP4X6B1jfCeItUYsMKQopTelMY</string>
 
     <string name="agregar">Agregar Direccion Origen</string>
@@ -20,6 +20,16 @@
     <string name="sign_out">salir</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="inicio">Inicio</string>
+    <string name="agendar_circuitos">Agendar Circuitos</string>
+    <string name="alta_grupo">Crear Grupo</string>
+    <string name="inicio_sesion">Iniciar Sesion</string>
+    <string name="crear_circuito">Crear Circuito</string>
+    <string name="circuitos">Circuitos</string>
+
+    <string name="hora_circuito">Hora del Circuito</string>
+    <string name="fecha_del_circuito">Fecha del Ciruito</string>
 
 
 </resources>

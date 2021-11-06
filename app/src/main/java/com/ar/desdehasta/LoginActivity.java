@@ -62,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
+                Toast.makeText(this, "Error al ingresar", Toast.LENGTH_SHORT).show();
                 Log.w(TAG, "FALLO Google signIn", e);
             }
         }
