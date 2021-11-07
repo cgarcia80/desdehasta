@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity{
         grupos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), AltaGrupoActivity.class);
+                Intent intent = new Intent(v.getContext(), IniciarCircuitoActivity.class);
                 startActivityForResult(intent, 0);
             }
         });
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity{
         agenda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), AgendaCircuitosActivity.class);
+                Intent intent = new Intent(v.getContext(), AgendaDeEventosActivity.class);
                 startActivityForResult(intent, 0);
             }
         });

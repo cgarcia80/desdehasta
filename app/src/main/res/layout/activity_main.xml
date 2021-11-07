@@ -70,18 +70,18 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="94dp"
+                    android:layout_height="57dp"
                     android:layout_margin="8dp"
                     android:contentDescription="Circuitos"
                     android:padding="8dp"
-                    android:src="@drawable/group_people_person_icon" />
+                    android:src="@drawable/maps_menu_navigation_pointer_icon" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Grupos"
+                    android:text="Iniciar Circuito"
                     android:textColor="#333333"
                     android:textSize="20sp"
                     android:textStyle="bold" />

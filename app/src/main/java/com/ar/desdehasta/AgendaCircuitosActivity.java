@@ -36,10 +36,11 @@ public class AgendaCircuitosActivity extends AppCompatActivity {
     private CalendarView calendarView;
     private TextView circuitos;
     private TextView fechaCircuito;
-    private FirebaseDatabase database;
     private DatabaseReference ref;
     private DatabaseReference refCircuitos;
     private ImageButton agregar;
+
+    private FirebaseDatabase database;
     FirebaseAuth auth;
     private List<Grupo> listGrupo = new ArrayList<>();
     ArrayAdapter<Grupo> arrayAdapterGrupo;
