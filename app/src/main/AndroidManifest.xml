@@ -15,9 +15,7 @@
         android:theme="@style/Theme.Desdehasta">
         <activity android:name=".AgendaDeEventosActivity"></activity>
         <activity android:name=".IniciarCircuitoActivity" />
-        <activity
-            android:name=".AgendaCircuitosActivity"
-            android:label="@string/agendar_circuitos" /> <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar" -->
+        <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar" -->
         <activity
             android:name=".AltaGrupoActivity"
             android:label="@string/alta_grupo" />
