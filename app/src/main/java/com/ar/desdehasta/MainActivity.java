@@ -154,14 +154,19 @@ public class MainActivity extends AppCompatActivity{
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        int idItem = item.getItemId();
+
+        switch (idItem){
             case R.id.logout:
                 Toast.makeText(this, "Cerrado", Toast.LENGTH_SHORT).show();
                 signOut();
+                return true;
+            case R.id.about:
+                Intent intent = new Intent(this, AboutActivity.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-
 }

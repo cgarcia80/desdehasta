@@ -15,15 +15,19 @@
         android:theme="@style/Theme.Desdehasta">
         <activity
             android:name=".AboutActivity"
-            android:exported="false" />
+            android:label="@string/about"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".InteresActivityDetail"
             android:exported="false"
-            android:label="@string/interesDetalles" />
+            android:label="@string/interesDetalles"
+            android:parentActivityName=".InteresActivity"/>
         <activity
             android:name=".InteresActivity"
             android:exported="false"
-            android:label="@string/interes" />
+            android:label="@string/interes"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".AgendaDeEventosActivity"
             android:label="@string/agendar_circuitos" />
