@@ -3,14 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/ad125615/Documents/ORT/IV CUATRI/TP3/desdehasta/app/src/main/res/layout/activity_agenda_circuitos.xml" value="0.14097222222222222" />
-        <entry key="..\:/Users/ad125615/Documents/ORT/IV CUATRI/TP3/desdehasta/app/src/main/res/layout/activity_alta_circuito.xml" value="0.14" />
-        <entry key="..\:/Users/ad125615/Documents/ORT/IV CUATRI/TP3/desdehasta/app/src/main/res/layout/activity_alta_grupo.xml" value="0.153125" />
-        <entry key="..\:/Users/ad125615/Documents/ORT/IV CUATRI/TP3/desdehasta/app/src/main/res/layout/activity_listado_circuitos.xml" value="0.142578125" />
-        <entry key="..\:/Users/ad125615/Documents/ORT/IV CUATRI/TP3/desdehasta/app/src/main/res/layout/activity_main.xml" value="0.18" />
-        <entry key="..\:/Users/ad125615/Documents/ORT/IV CUATRI/TP3/desdehasta/app/src/main/res/layout/style_spinner.xml" value="0.2" />
-        <entry key="..\:/Users/ad125615/Documents/ORT/IV CUATRI/TP3/desdehasta/app/src/main/res/menu/menu_grupos.xml" value="0.1" />
-        <entry key="..\:/Users/ad125615/Documents/ORT/IV CUATRI/TP3/desdehasta/app/src/main/res/menu/menu_inicio.xml" value="0.153125" />
+        <entry key="..\:/Users/ad125615/Desktop/desdehasta/app/src/main/res/layout/interes_activity.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/ad125615/Desktop/desdehasta/app/src/main/res/layout/interes_activity_detail.xml" value="0.33" />
+        <entry key="..\:/Users/ad125615/Desktop/desdehasta/app/src/main/res/layout/list_element.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

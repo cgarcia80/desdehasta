@@ -13,9 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Desdehasta">
-        <activity android:name=".AgendaDeEventosActivity"></activity>
-        <activity android:name=".IniciarCircuitoActivity" />
-        <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar" -->
+        <activity
+            android:name=".InteresActivityDetail"
+            android:exported="false" />
+        <activity
+            android:name=".InteresActivity"
+            android:exported="false" />
+        <activity android:name=".AgendaDeEventosActivity" />
+        <activity android:name=".IniciarCircuitoActivity" /> <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar" -->
         <activity
             android:name=".AltaGrupoActivity"
             android:label="@string/alta_grupo" />
