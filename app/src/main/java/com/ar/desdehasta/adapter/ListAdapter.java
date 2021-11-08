@@ -71,7 +71,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
         void bindData(final ListElement item){
             iconImage.setColorFilter(Color.parseColor(item.getColor()), PorterDuff.Mode.SRC_IN);
             nombre.setText(item.getNombre());
-            direccion.setText(item.getDireccion());
+            direccion.setText("Mas info aqui 👆");
             barrio.setText(item.getBarrio());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

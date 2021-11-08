@@ -14,16 +14,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Desdehasta">
         <activity
-            android:name=".InteresActivityDetail"
+            android:name=".AboutActivity"
             android:exported="false" />
+        <activity
+            android:name=".InteresActivityDetail"
+            android:exported="false"
+            android:label="@string/interesDetalles" />
         <activity
             android:name=".InteresActivity"
-            android:exported="false" />
-        <activity android:name=".AgendaDeEventosActivity" />
-        <activity android:name=".IniciarCircuitoActivity" /> <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar" -->
+            android:exported="false"
+            android:label="@string/interes" />
         <activity
-            android:name=".AltaGrupoActivity"
-            android:label="@string/alta_grupo" />
+            android:name=".AgendaDeEventosActivity"
+            android:label="@string/agendar_circuitos" />
+        <activity
+            android:name=".IniciarCircuitoActivity"
+            android:label="@string/iniciar_circuito" /> <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar" -->
+        <activity android:name=".AltaGrupoActivity" />
         <activity android:name=".AltaPersonasActivity" />
         <activity
             android:name=".LoginActivity"

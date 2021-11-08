@@ -15,8 +15,8 @@ import com.ar.desdehasta.pojo.ListElement;
 
 public class InteresActivityDetail extends AppCompatActivity {
 
-    TextView tvNombre, tvDireccion, tvBarrio, tvCall;
-    ImageButton maps,call;
+    TextView tvNombre, tvDireccion, tvBarrio, tvCall, tvWeb;
+    ImageButton maps,call, web;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +28,15 @@ public class InteresActivityDetail extends AppCompatActivity {
         tvDireccion = findViewById(R.id.tvDireccion);
         tvBarrio = findViewById(R.id.tvBarrio);
         tvCall = findViewById(R.id.tv_call);
+        tvWeb = findViewById(R.id.tv_web);
 
         tvNombre.setText(element.getNombre());
         tvDireccion.setText("Direccion: "+element.getDireccion());
         tvBarrio.setText("Barrio: "+element.getBarrio());
-        tvCall.setText("Tel:"+ element.getTelefono());
+        if (element.getTelefono().equalsIgnoreCase("null"))
+            tvCall.setText("Tel: No posee numero telefonico");
+        else
+            tvCall.setText("Tel:"+ element.getTelefono());
         //tvGeo1.setText(element.getGeo1());
         //tvGeo2.setText(element.getGeo2());
 
@@ -40,7 +44,7 @@ public class InteresActivityDetail extends AppCompatActivity {
         maps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String location = "geo:"+element.getGeo1().toString()+","+element.getGeo2().toString();
+                String location = "geo:"+element.getGeo2()+","+element.getGeo1()+"?q=bicicleterias";
                 intentMap(location);
             }
         });
@@ -49,11 +53,31 @@ public class InteresActivityDetail extends AppCompatActivity {
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri numUri = Uri.parse("tel:" + element.getTelefono().toString());
+                Uri numUri = Uri.parse("tel:" + element.getTelefono());
                 Intent i = new Intent(Intent.ACTION_DIAL,numUri); // queda con el numero antes de apretar llamar
                 //Intent i = new Intent(Intent.ACTION_CALL,numUri); //Llama directo
 
-                if (i.resolveActivity(getPackageManager()) != null){
+                if(element.getTelefono().equalsIgnoreCase("null")){
+                    Toast.makeText(getApplicationContext(), element.getNombre() + "No Tiene Telefono Registrado", Toast.LENGTH_SHORT).show();
+                }
+                else if (i.resolveActivity(getPackageManager()) != null){
+                    startActivity(i);
+                }
+            }
+        });
+
+        web = findViewById(R.id.btn_img_web);
+        web.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = element.getWeb();
+                Uri webapage = Uri.parse(url);
+                Intent i = new Intent(Intent.ACTION_VIEW,webapage);
+
+                if(element.getWeb().equalsIgnoreCase("null")){
+                    Toast.makeText(getApplicationContext(), element.getNombre()+"No Posee Sitio Web", Toast.LENGTH_SHORT).show();
+                }
+                else if (i.resolveActivity(getPackageManager()) != null){
                     startActivity(i);
                 }
             }
