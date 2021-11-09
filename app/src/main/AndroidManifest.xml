@@ -13,21 +13,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Desdehasta">
+        <activity android:name=".AdministratorActivity"></activity>
         <activity
             android:name=".AboutActivity"
-            android:label="@string/about"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
+            android:label="@string/about"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".InteresActivityDetail"
             android:exported="false"
             android:label="@string/interesDetalles"
-            android:parentActivityName=".InteresActivity"/>
+            android:parentActivityName=".InteresActivity" />
         <activity
             android:name=".InteresActivity"
             android:exported="false"
             android:label="@string/interes"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AgendaDeEventosActivity"
             android:label="@string/agendar_circuitos" />
@@ -35,7 +36,7 @@
             android:name=".IniciarCircuitoActivity"
             android:label="@string/iniciar_circuito" /> <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar" -->
         <activity android:name=".AltaGrupoActivity" />
-        <activity android:name=".AltaPersonasActivity" />
+        <activity android:name=".AltaStoreActivity" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/inicio_sesion" />

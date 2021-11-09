@@ -1,33 +1,25 @@
 package com.ar.desdehasta;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
-import com.ar.desdehasta.databinding.ActivityMainBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.UUID;
-
-/* */
 public class MainActivity extends AppCompatActivity{
     public static final String ANONYMOUS = "anonymous";
     private GoogleSignInClient mSignInClient;
-    //private ActivityMainBinding mBinding;
     private FirebaseAuth mFirebaseAuth;
     private LinearLayout circuitos;
     private LinearLayout grupos;
@@ -38,8 +30,6 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //mBinding = ActivityMainBinding.inflate(getLayoutInflater());
-        //setContentView(mBinding.getRoot());
 
 
         circuitos=findViewById(R.id.layout1);
@@ -82,23 +72,7 @@ public class MainActivity extends AppCompatActivity{
         // Initialize Firebase Auth and check if the user is signed in
         mFirebaseAuth = FirebaseAuth.getInstance();
 
-/*        Button circuitos = findViewById(R.id.btnCircuitos);
-        circuitos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ListadoCircuitosActivity.class);
-                startActivityForResult(intent, 0);
-            }
-        });
 
-        Button grupos = findViewById(R.id.btnGrupos);
-        grupos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), AltaPersonasActivity.class);
-                startActivityForResult(intent, 0);
-            }
-        });*/
 
         if (mFirebaseAuth.getCurrentUser() == null) {
             // Not signed in, launch the Sign In activity
@@ -114,12 +88,8 @@ public class MainActivity extends AppCompatActivity{
         mSignInClient = GoogleSignIn.getClient(this, gso);
        // setProfile();
 
+        getUserFirebase();
     }
-/*
-    private void setProfile() {
-        Glide.with(this).load(getUserPhotoUrl()).into(mBinding.profileImage);
-        mBinding.profileName.setText(getUserName());
-    }*/
 
     private void signOut() {
         mFirebaseAuth.signOut();
@@ -128,9 +98,20 @@ public class MainActivity extends AppCompatActivity{
         finish();
     }
 
-    private String getUserPhotoUrl() {
+    private String getUserFirebase() {
         FirebaseUser user = mFirebaseAuth.getCurrentUser();
         if (user != null && user.getPhotoUrl() != null) {
+            if(user.getUid().equals("s0T9trdzZMZhRPAZcBCSQ9o3SCp2")) {
+                Toast.makeText(this, "usuarioo..ADMIN....." + user.getDisplayName() + "- id --" + user.getUid(), Toast.LENGTH_SHORT).show();
+                Button resetButton=(Button)findViewById(R.id.admin); resetButton.setVisibility(View.VISIBLE);
+                resetButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), AdministratorActivity.class);
+                        startActivityForResult(intent, 0);
+                    }
+                });
+            }
             return user.getPhotoUrl().toString();
         }
         return null;

@@ -2,8 +2,6 @@ package com.ar.desdehasta;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
@@ -36,7 +34,7 @@ public class ListadoCircuitosActivity extends AppCompatActivity implements Adapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado_circuitos);
 
-        Button info = findViewById(R.id.cargarmapa);
+      /*  Button info = findViewById(R.id.cargarmapa);
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +42,7 @@ public class ListadoCircuitosActivity extends AppCompatActivity implements Adapt
                 startActivityForResult(intent, 0);
             }
         });
-
+        */
 
         ref = FirebaseDatabase.getInstance().getReference().child("Circuito");
         rv = findViewById(R.id.rv);

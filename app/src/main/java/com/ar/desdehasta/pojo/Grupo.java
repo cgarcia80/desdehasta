@@ -1,6 +1,8 @@
 package com.ar.desdehasta.pojo;
 
-public class Grupo {
+import java.io.Serializable;
+
+public class Grupo{
     private String uid;
     private String Nombre;
     private String Circuito;

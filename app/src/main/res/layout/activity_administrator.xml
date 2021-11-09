@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gris_claro"
-    tools:context=".MainActivity" >
+    tools:context=".AdministratorActivity" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutHeader"
@@ -18,10 +18,10 @@
 
 
         <TextView
-            android:id="@+id/textBienvenida"
+            android:id="@+id/textAdminUtils"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bienvenidos"
+            android:text="ADMINISTRATOR MODE"
             android:textColor="@color/white"
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -50,7 +50,7 @@
 
 
             <LinearLayout
-                android:id="@+id/layout1"
+                android:id="@+id/ly_circuitos"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -59,23 +59,23 @@
                 android:orientation="vertical"
                 android:padding="15dp"
                 app:layout_constraintDimensionRatio="H, 1:1"
-                app:layout_constraintEnd_toStartOf="@id/layout2"
+                app:layout_constraintEnd_toStartOf="@id/ly_store"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="98dp"
+                    android:layout_height="73dp"
                     android:layout_margin="8dp"
-                    android:contentDescription="Circuitos"
+                    android:contentDescription="Alta de Circuitos"
                     android:padding="8dp"
-                    android:src="@drawable/bicycle_cycling_riding_sport_icon" />
+                    android:src="@drawable/location_maps_navigation_icon" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Circuitos"
+                    android:text="Alta de Circuitos"
                     android:textColor="#333333"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -83,7 +83,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layout2"
+                android:id="@+id/ly_store"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -93,93 +93,28 @@
                 android:padding="15dp"
                 app:layout_constraintDimensionRatio="H, 1:1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/layout1"
+                app:layout_constraintStart_toEndOf="@id/ly_circuitos"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="99dp"
+                    android:layout_height="97dp"
                     android:layout_margin="8dp"
-                    android:contentDescription="Circuitos"
+                    android:contentDescription="Cargar Stores"
                     android:padding="8dp"
-                    android:src="@drawable/maps_menu_navigation_pointer_icon" />
+                    android:src="@drawable/shop_store_icon" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Iniciar Circuito"
+                    android:text="Cargar Stores"
                     android:textColor="#333333"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/layout3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:background="@color/white"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="15dp"
-                app:layout_constraintDimensionRatio="H, 1:1"
-                app:layout_constraintEnd_toStartOf="@id/layout2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layout1">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="8dp"
-                    android:contentDescription="Agenda"
-                    android:padding="8dp"
-                    android:src="@drawable/calendar_date_event_month_icon" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Calendario"
-                    android:textColor="#333333"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:background="@color/white"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="15dp"
-                app:layout_constraintDimensionRatio="H, 1:1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/layout1"
-                app:layout_constraintTop_toBottomOf="@id/layout2">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="8dp"
-                    android:contentDescription="Circuitos"
-                    android:padding="8dp"
-                    android:src="@drawable/massage_chatting_texting_interesting_icon" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Interes"
-                    android:textColor="#333333"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -193,5 +128,5 @@
         android:layout_height="wrap_content"
         android:text="admin"
         android:visibility="gone"
-    tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

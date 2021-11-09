@@ -23,7 +23,8 @@ public class ListElement implements Serializable {
         this.telefono = telefono;
         this.web = web;
     }
-
+    public ListElement() {
+    }
     public String getColor() {
         return color;
     }

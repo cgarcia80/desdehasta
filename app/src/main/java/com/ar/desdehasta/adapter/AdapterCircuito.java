@@ -16,9 +16,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class AdapterCircuito  extends RecyclerView.Adapter<AdapterCircuito.viewholdercircuito> implements View.OnClickListener{
-        List<Circuito> circuitoList;
-        private View.OnClickListener listener;
-        private RecyclerItemClick itemClick;
+    List<Circuito> circuitoList;
+    private View.OnClickListener listener;
+    private RecyclerItemClick itemClick;
 
     public AdapterCircuito(List<Circuito> circuitoList, RecyclerItemClick itemClick) {
         this.circuitoList = circuitoList;
@@ -31,7 +31,7 @@ public class AdapterCircuito  extends RecyclerView.Adapter<AdapterCircuito.viewh
         View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.row_ciruitos,parent,false);
         viewholdercircuito holder= new viewholdercircuito(v);
 
-         v.setOnClickListener(this);
+        v.setOnClickListener(this);
 
         return holder;
     }
