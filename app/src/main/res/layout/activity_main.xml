@@ -40,7 +40,8 @@
             android:text="admin"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="-1dp"
-            tools:layout_editor_absoluteY="-14dp" />
+            tools:layout_editor_absoluteY="-14dp"
+            android:visibility="gone"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
