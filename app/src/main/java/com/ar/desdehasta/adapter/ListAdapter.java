@@ -2,7 +2,6 @@ package com.ar.desdehasta.adapter;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
@@ -15,21 +14,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ar.desdehasta.R;
-import com.ar.desdehasta.pojo.ListElement;
+import com.ar.desdehasta.pojo.Store;
 
 import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
-    private List<ListElement> mData;
+    private List<Store> mData;
     private LayoutInflater mInflate;
     private Context context;
     final ListAdapter.OnItemClickListener listener;
 
     public interface OnItemClickListener{
-        void onItemClick(ListElement item);
+        void onItemClick(Store item);
     }
 
-    public ListAdapter(List<ListElement> itemList, Context context, ListAdapter.OnItemClickListener listener){
+    public ListAdapter(List<Store> itemList, Context context, ListAdapter.OnItemClickListener listener){
         this.mData =itemList;
         this.mInflate = LayoutInflater.from(context);
         this.context = context;
@@ -54,7 +53,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
         return mData.size();
     }
 
-    public void setItems(List<ListElement> items){mData = items;}
+    public void setItems(List<Store> items){mData = items;}
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView iconImage;
@@ -68,7 +67,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
             barrio = itemView.findViewById(R.id.barrioTextView);
         }
 
-        void bindData(final ListElement item){
+        void bindData(final Store item){
             iconImage.setColorFilter(Color.parseColor(item.getColor()), PorterDuff.Mode.SRC_IN);
             nombre.setText(item.getNombre());
             direccion.setText("Mas info aqui 👆");

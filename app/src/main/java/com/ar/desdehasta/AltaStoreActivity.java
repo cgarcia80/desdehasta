@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 public class AltaStoreActivity extends AppCompatActivity {
@@ -61,11 +62,11 @@ public class AltaStoreActivity extends AppCompatActivity {
                 storeSelected = (Store) parent.getItemAtPosition(position);
                 nomS.setText(storeSelected.getNombre());
                 dirS.setText(storeSelected.getDireccion());
-                LocS.setText(storeSelected.getLocalidad());
-                latS.setText(storeSelected.getLatitud());
-                lgnS.setText(storeSelected.getLongitud());
+                LocS.setText(storeSelected.getBarrio());
+                latS.setText(storeSelected.getGeo1());
+                lgnS.setText(storeSelected.getGeo2());
                 telS.setText(storeSelected.getTelefono());
-                webS.setText(storeSelected.getSitioweb());
+                webS.setText(storeSelected.getWeb());
             }
         });
 
@@ -123,14 +124,15 @@ public class AltaStoreActivity extends AppCompatActivity {
                 }
                 else {
                     Store s = new Store();
+                    s.setColor(color());
                     s.setUid(UUID.randomUUID().toString());
                     s.setNombre(nombre);
                     s.setDireccion(direccion);
-                    s.setLocalidad(localidad);
-                    s.setLatitud(latitude);
-                    s.setLongitud(longitude);
+                    s.setBarrio(localidad);
+                    s.setGeo1(latitude);
+                    s.setGeo2(longitude);
                     s.setTelefono(telefono);
-                    s.setSitioweb(web);
+                    s.setWeb(web);
                     databaseReference.child("Stores").child(s.getUid()).setValue(s);
                     //databaseReference.push().setValue(p);
                     Toast.makeText(this, "Agregado", Toast.LENGTH_LONG).show();
@@ -143,15 +145,17 @@ public class AltaStoreActivity extends AppCompatActivity {
                     validacion();
                 }
                 else {
+
                 Store s = new Store();
+                s.setColor(color());
                 s.setUid(UUID.randomUUID().toString());
                 s.setNombre(nomS.getText().toString().trim());
                 s.setDireccion(dirS.getText().toString().trim());
-                s.setLocalidad(LocS.getText().toString().trim());
-                s.setLatitud(latS.getText().toString().trim());
-                s.setLongitud(lgnS.getText().toString().trim());
+                s.setBarrio(LocS.getText().toString().trim());
+                s.setGeo1(latS.getText().toString().trim());
+                s.setGeo2(lgnS.getText().toString().trim());
                 s.setTelefono(telS.getText().toString().trim());
-                s.setSitioweb(webS.getText().toString().trim());
+                s.setWeb(webS.getText().toString().trim());
                 databaseReference.child("Stores").child(s.getUid()).setValue(s);
                 Toast.makeText(this,"Actualizado", Toast.LENGTH_LONG).show();
                 limpiarCajas();
@@ -201,5 +205,12 @@ public class AltaStoreActivity extends AppCompatActivity {
         else if (longitude.equals("")){
             lgnS.setError("Required");
         }
+    }
+    private String color(){
+        String[] arcoIris = new String[]{"#800080","#000000","#FF0000","#0000FF","#00FF00","#FFFF00","#FF00FF","#00FFFF","#8800FF","#FF8800"};
+        Random random = new Random();
+        int color = random.nextInt(10);
+
+        return arcoIris[color];
     }
 }
