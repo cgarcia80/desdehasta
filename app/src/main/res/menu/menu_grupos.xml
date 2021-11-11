@@ -10,10 +10,11 @@
     <item android:id="@+id/icon_save"
         android:icon="@drawable/change_edit_pencil_creative_design_icon_chico"
         android:title="Edit Done"
+        android:visible="false"
         app:showAsAction="always" />
 
     <item android:id="@+id/icon_delete"
-        android:icon="@drawable/ic_delete"
+        android:icon="@drawable/delete_menu_icon"
         android:title="Edit Done"
         app:showAsAction="always" />
 
