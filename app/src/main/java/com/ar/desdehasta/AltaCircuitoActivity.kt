@@ -259,25 +259,19 @@ class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun setMarkerFrom(latLng: LatLng){
-
         mMarkerOrigen?.remove()
         mMarkerOrigen= addMarker(latLng,getString(R.string.macador_origen))
-
     }
 
     private fun setMarkerTo(latLng: LatLng){
         mMarkerDestino?.remove()
-
         mMarkerDestino= addMarker(latLng,getString(R.string.macador_origen))
 
     }
 
     private fun onDirectionSuccess(direction: Direction?) {
-
-
         direction?.let {
            // showSnackbar(getString(R.string.success_with_status, direction.status))
-
             if (direction.isOK) {
                 val route = direction.routeList[0]
 

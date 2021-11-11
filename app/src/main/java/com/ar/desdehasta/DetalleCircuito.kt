@@ -1,14 +1,13 @@
 package com.ar.desdehasta
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
-import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
-import com.akexorcist.googledirection.BuildConfig
 import com.akexorcist.googledirection.GoogleDirection
-import com.akexorcist.googledirection.config.GoogleDirectionConfiguration
 import com.akexorcist.googledirection.constant.TransportMode
 import com.akexorcist.googledirection.model.Direction
 import com.akexorcist.googledirection.model.Route
@@ -22,6 +21,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_detalle_circuito.*
+
 
 class DetalleCircuito : AppCompatActivity() {
 
@@ -46,6 +47,16 @@ class DetalleCircuito : AppCompatActivity() {
         initViews()
         initValues()
         setUpMapa()
+
+        imageAgenda.setOnClickListener { val intent = Intent(context, AgendaDeEventosActivity::class.java) startActivity(intent); }
+
+
+        /*
+        {
+
+        }
+*/
+
     }
 
     private fun setUpMapa() {

@@ -31,6 +31,17 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.515" />
 
+        <ImageButton
+            android:id="@+id/admin"
+            android:layout_width="94dp"
+            android:layout_height="62dp"
+            android:background="@color/green"
+            android:src="@drawable/admin_man_person_user_icon"
+            android:text="admin"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="-1dp"
+            tools:layout_editor_absoluteY="-14dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -187,11 +198,4 @@
 
     </ScrollView>
 
-    <Button
-        android:id="@+id/admin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="admin"
-        android:visibility="gone"
-    tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

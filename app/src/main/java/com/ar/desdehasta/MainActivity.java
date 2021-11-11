@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity{
         if (user != null && user.getPhotoUrl() != null) {
             if(user.getUid().equals("s0T9trdzZMZhRPAZcBCSQ9o3SCp2")) {
                 Toast.makeText(this, "usuarioo..ADMIN....." + user.getDisplayName() + "- id --" + user.getUid(), Toast.LENGTH_SHORT).show();
-                Button resetButton=(Button)findViewById(R.id.admin); resetButton.setVisibility(View.VISIBLE);
+                ImageButton resetButton=(ImageButton)findViewById(R.id.admin); resetButton.setVisibility(View.VISIBLE);
                 resetButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
