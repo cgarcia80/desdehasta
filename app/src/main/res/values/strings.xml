@@ -38,7 +38,7 @@
         guardados para usarlos las veces que sean necesarios, se pueden agendar para alguna fecha en especifico con recordatorio.
         Tambien podras ver algunas tiendas escuclivas de bicicletas donde podras consultar la informacion de cada una.
     </string>
-    <string name="desarrolladores">Desarrolladores: Tomas Lalan - Jhon Carreño - Cesar Gonzales</string>
+    <string name="desarrolladores">Desarrolladores: Tomas Lalanne - Jhon Carreño - Cesar Garcia</string>
     <string name="title_activity_splashscreen">SplashscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
