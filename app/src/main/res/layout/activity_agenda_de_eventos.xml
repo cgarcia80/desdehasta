@@ -94,7 +94,7 @@
     </LinearLayout>
     <Button
         android:id="@+id/btn_guardar"
-        android:text="Guardar en calendario"
+        android:text="Guardar evento en agenda"
         android:textColor="#fff"
         android:background="@color/colorPrimary"
         android:layout_width="match_parent"
