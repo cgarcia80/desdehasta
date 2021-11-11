@@ -48,7 +48,6 @@ class DetalleCircuito : AppCompatActivity() {
         initValues()
         setUpMapa()
 
-        imageAgenda.setOnClickListener { val intent = Intent(context, AgendaDeEventosActivity::class.java) startActivity(intent); }
 
 
         /*
