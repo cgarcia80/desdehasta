@@ -4,9 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.TextView
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.akexorcist.googledirection.GoogleDirection
 import com.akexorcist.googledirection.constant.TransportMode
@@ -49,6 +47,7 @@ class DetalleCircuito : AppCompatActivity() {
         initValues()
         setUpMapa()
         btn_imageAgenda.setOnClickListener {
+
             startActivity(Intent(this,AgendaDeEventosActivity::class.java))
         }
 

@@ -59,7 +59,7 @@ public class WorkManagerNotificacion extends Worker {
             nm.createNotificationChannel(nc);
         }
 
-        Intent intent = new Intent(getApplicationContext(),AgendaDeEventosActivity.class);
+        Intent intent = new Intent(getApplicationContext(),IniciarCircuitoActivity.class);
 
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0 , intent, PendingIntent.FLAG_ONE_SHOT);

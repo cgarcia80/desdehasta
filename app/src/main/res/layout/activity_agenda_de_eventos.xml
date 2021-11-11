@@ -23,7 +23,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="85dp">
+        android:layout_marginTop="100dp">
 
         <TextView
             android:id="@+id/fecha"
@@ -38,7 +38,7 @@
 
         <ImageButton
             android:id="@+id/btn_fechaSeleccionada"
-            android:layout_width="80dp"
+            android:layout_width="181dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/green"
@@ -59,14 +59,14 @@
             android:layout_margin="10dp"
             android:layout_gravity="center"
             android:textSize="20dp"
-            android:hint="Seleccione una hora"
+            android:hint="Seleccione una hora  "
             android:textColor="#000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <ImageButton
             android:id="@+id/btn_horaSeleccionada"
-            android:layout_width="79dp"
+            android:layout_width="184dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/green"
@@ -86,8 +86,8 @@
             android:id="@+id/btn_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="70dp"
 
             />
 
@@ -104,7 +104,6 @@
         android:id="@+id/btn_eliminar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:background="@color/colorPrimaryDark"
         android:text="Eliminar alarma de calendario"
         android:textColor="#fff"
