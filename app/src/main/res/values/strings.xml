@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Desde-Hasta</string>
+    <string name="app_name">Bikers Run</string>
     <string name="api_key">AIzaSyATmeZ6gpP4X6B1jfCeItUYsMKQopTelMY</string>
 
     <string name="agregar">Agregar Direccion Origen</string>
@@ -39,5 +39,8 @@
         Tambien podras ver algunas tiendas escuclivas de bicicletas donde podras consultar la informacion de cada una.
     </string>
     <string name="desarrolladores">Desarrolladores: Tomas Lalan - Jhon Carreño - Cesar Gonzales</string>
+    <string name="title_activity_splashscreen">SplashscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>

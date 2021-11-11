@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            app:srcCompat="@drawable/biker" />
+            app:srcCompat="@drawable/caba" />
 
 
         <TextView
@@ -26,14 +26,17 @@
             android:layout_width="wrap_content"
             android:layout_height="64dp"
             android:layout_alignBottom="@id/sportsImageDetail"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="164dp"
+            android:elevation="10dp"
             android:padding="16dp"
-            android:textSize="30dp"
             android:text="Nombre de la tienda"
+            android:textAlignment="textStart"
+            android:textSize="30dp"
+            android:textStyle="bold"
             android:theme="@style/ThemeOverlay.AppCompat.Dark"
             app:layout_constraintBottom_toBottomOf="@+id/sportsImageDetail"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.042"
+            app:layout_constraintHorizontal_bias="0.009"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView

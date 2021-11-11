@@ -2,6 +2,7 @@ package com.ar.desdehasta;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;

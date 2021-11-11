@@ -15,7 +15,7 @@ import com.ar.desdehasta.pojo.ListElement;
 
 public class InteresActivityDetail extends AppCompatActivity {
 
-    TextView tvNombre, tvDireccion, tvBarrio, tvCall, tvWeb;
+    TextView tvNombre, tvDireccion, tvBarrio, tvCall, tvWeb, tvUrl;
     ImageButton maps,call, web;
 
     @Override
@@ -29,6 +29,7 @@ public class InteresActivityDetail extends AppCompatActivity {
         tvBarrio = findViewById(R.id.tvBarrio);
         tvCall = findViewById(R.id.tv_call);
         tvWeb = findViewById(R.id.tv_web);
+        tvUrl = findViewById(R.id.tv_web);
 
         tvNombre.setText(element.getNombre());
         tvDireccion.setText("Direccion: "+element.getDireccion());
@@ -36,7 +37,12 @@ public class InteresActivityDetail extends AppCompatActivity {
         if (element.getTelefono().equalsIgnoreCase("null"))
             tvCall.setText("Tel: No posee numero telefonico");
         else
-            tvCall.setText("Tel:"+ element.getTelefono());
+            tvCall.setText("Tel: "+ element.getTelefono());
+
+        if (element.getWeb().equalsIgnoreCase("null"))
+            tvUrl.setText("Sin pagina web");
+        else
+            tvUrl.setText(element.getWeb());
         //tvGeo1.setText(element.getGeo1());
         //tvGeo2.setText(element.getGeo2());
 
