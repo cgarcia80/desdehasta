@@ -146,7 +146,7 @@ public class AgendaDeEventosActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 arrayList.clear();
-                arrayList.add("-Seleccionar Circuito-");
+                arrayList.add("-Seleccione su circuito-");
                 for (DataSnapshot item: snapshot.getChildren()){
                     String nombre=item.child("nombre").getValue(String.class);
                     // int kilometros=item.child("kilometros").getValue(Integer.class);
