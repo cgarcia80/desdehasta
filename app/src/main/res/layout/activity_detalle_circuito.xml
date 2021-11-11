@@ -47,7 +47,7 @@
             android:textStyle="bold" />
 
         <ImageButton
-            android:id="@+id/imageAgenda"
+            android:id="@+id/btn_imageAgenda"
             android:layout_width="52dp"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/icon_calendar" />
