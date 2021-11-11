@@ -8,14 +8,26 @@
     android:gravity="center"
     android:background="@drawable/fondo"
     tools:context=".AgendaDeEventosActivity">
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="166dp"
+        android:layout_height="122dp"
+        android:layout_marginTop="44dp"
+        android:src="@drawable/icon_calendar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="85dp">
 
         <TextView
             android:id="@+id/fecha"
+
             android:layout_margin="10dp"
             android:layout_gravity="center"
             android:textSize="20dp"
