@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -39,7 +40,8 @@ public class AgendaDeEventosActivity extends AppCompatActivity {
     private Spinner spinner;
     private ArrayList<String> arrayList =new ArrayList<>();
 
-    Button btn_fechaSeleccionada,btn_horaSeleccionada,btn_guardar,btn_eliminar;
+    ImageButton btn_fechaSeleccionada,btn_horaSeleccionada;
+    Button btn_guardar,btn_eliminar;
     TextView hora,fecha;
 
     String circuito;

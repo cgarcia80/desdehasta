@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@drawable/fondo"
     tools:context=".AgendaDeEventosActivity">
 
     <LinearLayout
@@ -23,15 +24,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <Button
-            android:padding="10dp"
+        <ImageButton
             android:id="@+id/btn_fechaSeleccionada"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:textColor="#fff"
+            android:background="@color/green"
+            android:padding="10dp"
+            android:src="@drawable/calendar_date_event_month_icon"
             android:text="Seleccionar fecha"
-            android:background="@color/colorPrimaryDark"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:textColor="#fff" />
 
     </LinearLayout>
 
@@ -50,13 +52,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_horaSeleccionada"
-            android:layout_width="186dp"
+            android:layout_width="79dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/green"
             android:padding="10dp"
+            android:src="@drawable/clock_alarm_date_day_hour_icon"
             android:text="Seleccionar hora"
             android:textColor="#fff" />
 
@@ -86,12 +89,14 @@
         android:layout_height="wrap_content"/>
 
     <Button
-        android:layout_marginTop="20dp"
         android:id="@+id/btn_eliminar"
-        android:textColor="#fff"
-        android:text="Eliminar alarma de calendario"
-        android:background="@color/colorPrimaryDark"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Eliminar alarma de calendario"
+        android:textColor="#fff"
+        android:visibility="gone"
+        />
 
 </LinearLayout>
