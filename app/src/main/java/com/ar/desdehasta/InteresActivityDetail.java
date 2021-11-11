@@ -11,7 +11,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ar.desdehasta.pojo.ListElement;
+import com.ar.desdehasta.pojo.Store;
 
 public class InteresActivityDetail extends AppCompatActivity {
 
@@ -23,7 +23,7 @@ public class InteresActivityDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.interes_activity_detail);
 
-        ListElement element = (ListElement) getIntent().getSerializableExtra("ListElement");
+        Store element = (Store) getIntent().getSerializableExtra("ListElement");
         tvNombre = findViewById(R.id.tvNombre);
         tvDireccion = findViewById(R.id.tvDireccion);
         tvBarrio = findViewById(R.id.tvBarrio);

@@ -2,26 +2,43 @@ package com.ar.desdehasta.pojo;
 
 import java.io.Serializable;
 
-public class Store {
-
+public class Store implements Serializable {
     private String uid;
-    private String nombre;
-    private String direccion;
-    private String localidad;
-    private String latitud;
-    private String longitud;
-    private String telefono;
-    private String sitioweb;
+    public String color;
+    public String nombre;
+    public String direccion;
+    public String barrio;
+    public String geo1;
+    public String geo2;
+    public String telefono;
+    public String web;
 
+
+    public Store(String color, String nombre, String direccion, String barrio, String geo1, String geo2, String telefono, String web) {
+        this.color = color;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.barrio = barrio;
+        this.geo1 = geo1;
+        this.geo2 = geo2;
+        this.telefono = telefono;
+        this.web = web;
+    }
     public Store() {
     }
-
     public String getUid() {
         return uid;
     }
-
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public String getNombre() {
@@ -40,28 +57,28 @@ public class Store {
         this.direccion = direccion;
     }
 
-    public String getLocalidad() {
-        return localidad;
+    public String getBarrio() {
+        return barrio;
     }
 
-    public void setLocalidad(String localidad) {
-        this.localidad = localidad;
+    public void setBarrio(String barrio) {
+        this.barrio = barrio;
     }
 
-    public String getLatitud() {
-        return latitud;
+    public String getGeo1() {
+        return geo1;
     }
 
-    public void setLatitud(String latitud) {
-        this.latitud = latitud;
+    public void setGeo1(String geo1) {
+        this.geo1 = geo1;
     }
 
-    public String getLongitud() {
-        return longitud;
+    public String getGeo2() {
+        return geo2;
     }
 
-    public void setLongitud(String longitud) {
-        this.longitud = longitud;
+    public void setGeo2(String geo2) {
+        this.geo2 = geo2;
     }
 
     public String getTelefono() {
@@ -72,14 +89,13 @@ public class Store {
         this.telefono = telefono;
     }
 
-    public String getSitioweb() {
-        return sitioweb;
+    public String getWeb() {
+        return web;
     }
 
-    public void setSitioweb(String sitioweb) {
-        this.sitioweb = sitioweb;
+    public void setWeb(String web) {
+        this.web = web;
     }
-
     @Override
     public String toString() {
         return getNombre();
