@@ -14,6 +14,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,8 +34,7 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Inicio");
+
         circuitos=findViewById(R.id.layout1);
         grupos=findViewById(R.id.layout2);
         agenda=findViewById(R.id.layout3);
@@ -92,6 +92,18 @@ public class MainActivity extends AppCompatActivity{
        // setProfile();
 
         getUserFirebase();
+
+        setearToolbar();
+
+    }
+
+    private void setearToolbar(){
+        ActionBar actionBar = getSupportActionBar();
+        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
+        if(signInAccount != null)
+            actionBar.setTitle(signInAccount.getDisplayName());
+        else
+            actionBar.setTitle("Inicio");
     }
 
     private void signOut() {
