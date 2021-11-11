@@ -31,7 +31,7 @@
             android:layout_margin="10dp"
             android:layout_gravity="center"
             android:textSize="20dp"
-            android:hint="Fecha seleccionada"
+            android:hint="Seleccione una fecha"
             android:textColor="#000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -59,7 +59,7 @@
             android:layout_margin="10dp"
             android:layout_gravity="center"
             android:textSize="20dp"
-            android:hint="Hora seleccionada  "
+            android:hint="Seleccione una hora"
             android:textColor="#000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
