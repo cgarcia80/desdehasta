@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -42,7 +43,7 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
     private ArrayList<String> arrayList =new ArrayList<>();
     private String lat;
     private String lng;
-
+    String valor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +52,8 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
         spinner= findViewById(R.id.spinnerNavegacion);
         ver=findViewById(R.id.textViewSeleccionCircutio);
         inicializarFirebase();
+        valor = getIntent().getStringExtra("circuito");
+        Log.i("ver",valor);
         showDataSpinner();
 
         navigation_btn=findViewById(R.id.navegar);
@@ -93,6 +96,8 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
                 ArrayAdapter<String> arrayAdapter =new ArrayAdapter<>(IniciarCircuitoActivity.this,R.layout.style_spinner,arrayList);
                 arrayAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
                 spinner.setAdapter(arrayAdapter);
+
+                spinner.setSelection(arrayAdapter.getPosition(valor));
 
                 spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override

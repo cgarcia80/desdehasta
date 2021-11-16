@@ -6,6 +6,8 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
@@ -23,6 +25,7 @@ public class WorkManagerNotificacion extends Worker {
     public WorkManagerNotificacion(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
+
 
     public static void GuardarNotificacion(long duracion,Data data , String tag){
         OneTimeWorkRequest noti = new OneTimeWorkRequest.Builder(WorkManagerNotificacion.class)
@@ -60,8 +63,10 @@ public class WorkManagerNotificacion extends Worker {
         }
 
         Intent intent = new Intent(getApplicationContext(),IniciarCircuitoActivity.class);
-
+        Log.i("ver",d);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        intent.putExtra("circuito",d);
+
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0 , intent, PendingIntent.FLAG_ONE_SHOT);
 
         builder.setAutoCancel(true)

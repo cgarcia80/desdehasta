@@ -48,6 +48,7 @@ public class AgendaDeEventosActivity extends AppCompatActivity {
 
     Calendar actual = Calendar.getInstance();
     Calendar calendar = Calendar.getInstance();
+    String valor;
 
     private int minutos,hora_reloj,dia,mes,anio;
 
@@ -66,11 +67,8 @@ public class AgendaDeEventosActivity extends AppCompatActivity {
 
         inicializarFirebase();
         spinner = findViewById(R.id.btn_spinner);
-        showDataSpinner();
 
-
-
-        btn_fechaSeleccionada.setOnClickListener(new View.OnClickListener() {
+         btn_fechaSeleccionada.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 anio = actual.get(Calendar.YEAR);
@@ -122,7 +120,7 @@ public class AgendaDeEventosActivity extends AppCompatActivity {
                 Long Alerttime = (calendar.getTimeInMillis() - System.currentTimeMillis());
                 int random = (int)(Math.random() * 50 + 1);
 
-                Data data = guardarData("Hora del Circuito", circuito + " " +"A pedalear!",random);
+                Data data = guardarData("Hora del Circuito", circuito ,random);
                 WorkManagerNotificacion.GuardarNotificacion(Alerttime,data,"tag1");
 
                 Toast.makeText(AgendaDeEventosActivity.this, "Alarma Agendada!", Toast.LENGTH_SHORT).show();
@@ -136,6 +134,9 @@ public class AgendaDeEventosActivity extends AppCompatActivity {
 
             }
         });
+
+            valor = getIntent().getStringExtra("circuito");
+            showDataSpinner();
 
 
 
@@ -158,6 +159,8 @@ public class AgendaDeEventosActivity extends AppCompatActivity {
                 ArrayAdapter<String> arrayAdapter =new ArrayAdapter<>(AgendaDeEventosActivity.this,R.layout.style_spinner,arrayList);
                 arrayAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
                 spinner.setAdapter(arrayAdapter);
+
+                spinner.setSelection(arrayAdapter.getPosition(valor));
 
                 spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
