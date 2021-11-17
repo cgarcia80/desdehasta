@@ -24,7 +24,7 @@ import java.util.Random;
 
 public class InteresActivity extends AppCompatActivity {
     DatabaseReference ref;
-
+    ListAdapter listAdapter;
     List<Store> elements;
 
     @Override
@@ -48,7 +48,7 @@ public class InteresActivity extends AppCompatActivity {
                         elements.add(store);
 
                     }
-                    //elements.notifyDataSetChanged();
+                    listAdapter.notifyDataSetChanged();
                 }
 
             }
@@ -60,7 +60,7 @@ public class InteresActivity extends AppCompatActivity {
         });
 
 
-        ListAdapter listAdapter = new ListAdapter(elements, this, new ListAdapter.OnItemClickListener() {
+        listAdapter = new ListAdapter(elements, this, new ListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Store item) {
                 moveToDescription(item);

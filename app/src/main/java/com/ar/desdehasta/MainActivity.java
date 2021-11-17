@@ -99,9 +99,11 @@ public class MainActivity extends AppCompatActivity{
 
     private void setearToolbar(){
         ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.drawable.ic_baseline_account_circle_24);
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
         if(signInAccount != null)
-            actionBar.setTitle(signInAccount.getDisplayName());
+            actionBar.setTitle(" " + signInAccount.getGivenName());
         else
             actionBar.setTitle("Inicio");
     }
