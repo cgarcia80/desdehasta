@@ -43,7 +43,7 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
     private ArrayList<String> arrayList =new ArrayList<>();
     private String lat;
     private String lng;
-    String valor;
+    String valor="-Seleccionar Circuito-";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +52,8 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
         spinner= findViewById(R.id.spinnerNavegacion);
         ver=findViewById(R.id.textViewSeleccionCircutio);
         inicializarFirebase();
-        valor = getIntent().getStringExtra("circuito");
         Log.i("ver",valor);
+        valor = getIntent().getStringExtra("circuito");
         showDataSpinner();
 
         navigation_btn=findViewById(R.id.navegar);
