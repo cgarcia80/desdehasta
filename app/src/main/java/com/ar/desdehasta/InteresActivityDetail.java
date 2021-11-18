@@ -50,7 +50,7 @@ public class InteresActivityDetail extends AppCompatActivity {
         maps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String location = "geo:"+element.getGeo2()+","+element.getGeo1()+"?q=bicicleterias";
+                String location = "geo:"+element.getGeo2()+","+element.getGeo1()+"?q=" + tvDireccion.getText();
                 intentMap(location);
             }
         });
