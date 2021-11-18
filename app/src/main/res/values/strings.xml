@@ -60,4 +60,9 @@
     <string name="main_comenzar">Comenzar</string>
     <string name="spinnerDefaultDircuito">-Seleccione su circuito-</string>
 
+    <!--Menu toolbar-->
+    <string name="menu_admin">Admin</string>
+    <string name="menu_acerca_de">Acerca de...</string>
+    <string name="menu_cerrar_sesion">Cerrar Sesion</string>
+
 </resources>
