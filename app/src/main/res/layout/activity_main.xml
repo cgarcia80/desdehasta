@@ -1,202 +1,284 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gris_claro"
-    tools:context=".MainActivity" >
+    android:animateLayoutChanges="true"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp"
+    app:cardUseCompatPadding="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutHeader"
-        android:layout_width="412dp"
-        android:layout_height="67dp"
-        android:background="@color/green"
-        android:padding="10dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
-
-
-        <TextView
-            android:id="@+id/textBienvenida"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bienvenido"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.431"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.515" />
-
-        <ImageButton
-            android:id="@+id/admin"
-            android:layout_width="94dp"
-            android:layout_height="62dp"
-            android:background="@color/green"
-            android:src="@drawable/admin_man_person_user_icon"
-            android:text="admin"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="-1dp"
-            tools:layout_editor_absoluteY="-14dp"
-            android:visibility="gone"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <ScrollView
+    <LinearLayout
+        android:id="@+id/layout1"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:overScrollMode="never"
-        android:scrollbars="none"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutHeader"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="-97dp">
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:background="@color/Light_Blue"
+        android:elevation="8dp"
+        android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="10dp">
 
+            <ImageView
+                android:id="@+id/img_circuitos"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:foregroundGravity="center"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:src="@drawable/bicycle_cycling_riding_sport_icon"></ImageView>
 
             <LinearLayout
-                android:id="@+id/layout1"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:background="@color/white"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="15dp"
-                app:layout_constraintDimensionRatio="H, 1:1"
-                app:layout_constraintEnd_toStartOf="@id/layout2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="8dp"
-                    android:contentDescription="Circuitos"
-                    android:padding="8dp"
-                    android:src="@drawable/bicycle_cycling_riding_sport_icon" />
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@+id/img_circuitos"
+                android:layout_toRightOf="@id/img_circuitos"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Circuitos"
-                    android:textColor="#333333"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:background="@color/white"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="15dp"
-                app:layout_constraintDimensionRatio="H, 1:1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/layout1"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="8dp"
-                    android:contentDescription="Circuitos"
-                    android:padding="8dp"
-                    android:src="@drawable/maps_menu_navigation_pointer_icon" />
+                    android:layout_marginBottom="6dp"
+                    android:text="@string/main_circuito"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"
+                    android:textStyle="bold"></TextView>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Iniciar Circuito"
-                    android:textColor="#333333"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="@string/main_detalles_circuito"
+                    android:textSize="13dp"></TextView>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/layout3"
-                android:layout_width="0dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:background="@color/white"
-                android:gravity="center"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="false"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/main_comenzar"
+                android:textSize="10dp"
+                android:textStyle="bold"></TextView>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        android:layout_marginTop="150dp"
+        android:elevation="8dp"
+        android:background="@color/Light_Blue">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+            <ImageView
+                android:id="@+id/img_iniciar_circuito"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:foregroundGravity="center"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:src="@drawable/maps_menu_navigation_pointer_icon"
+                android:layout_alignParentLeft="true">
+            </ImageView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@+id/img_iniciar_circuito"
                 android:orientation="vertical"
-                android:padding="15dp"
-                app:layout_constraintDimensionRatio="H, 1:1"
-                app:layout_constraintEnd_toStartOf="@id/layout2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layout1">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="8dp"
-                    android:contentDescription="Agenda"
-                    android:padding="8dp"
-                    android:src="@drawable/calendar_date_event_month_icon" />
-
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@id/img_iniciar_circuito">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Calendario"
-                    android:textColor="#333333"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:background="@color/white"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="15dp"
-                app:layout_constraintDimensionRatio="H, 1:1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/layout1"
-                app:layout_constraintTop_toBottomOf="@id/layout2">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="8dp"
-                    android:contentDescription="Circuitos"
-                    android:padding="8dp"
-                    android:src="@drawable/massage_chatting_texting_interesting_icon" />
-
+                    android:layout_marginBottom="6dp"
+                    android:text="@string/main_iniciar_circuito"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"
+                    android:textStyle="bold">
+                </TextView>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Interes"
-                    android:textColor="#333333"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="@string/main_detalles_iniciar_circuito"
+                    android:textSize="13dp">
+                </TextView>
 
             </LinearLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="false"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/main_comenzar"
+                android:textSize="10dp"
+                android:textStyle="bold"></TextView>
+        </RelativeLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/layout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        android:layout_marginTop="300dp"
+        android:elevation="8dp"
+        android:background="@color/Light_Blue">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+            <ImageView
+                android:id="@+id/img_agendar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:foregroundGravity="center"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:src="@drawable/calendar_date_event_month_icon"
+                android:layout_alignParentLeft="true">
+            </ImageView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@+id/img_agendar"
+                android:orientation="vertical"
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@id/img_agendar">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:text="@string/main_calendario"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"
+                    android:textStyle="bold">
+                </TextView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main_detalles_calendario"
+                    android:textSize="13dp">
+                </TextView>
 
-    </ScrollView>
+            </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="false"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/main_comenzar"
+                android:textSize="10dp"
+                android:textStyle="bold"></TextView>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        android:layout_marginTop="450dp"
+        android:elevation="8dp"
+        android:background="@color/Light_Blue">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+            <ImageView
+                android:id="@+id/img_tiendas"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:foregroundGravity="center"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:src="@drawable/massage_chatting_texting_interesting_icon"
+                android:layout_alignParentLeft="true">
+            </ImageView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@+id/img_tiendas"
+                android:orientation="vertical"
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@id/img_tiendas">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:text="@string/main_tiendas_bike"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"
+                    android:textStyle="bold">
+                </TextView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main_detalles_tiendas"
+                    android:textSize="13dp">
+                </TextView>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="false"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/main_tiendas_bike"
+                android:textSize="10dp"
+                android:textStyle="bold"></TextView>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

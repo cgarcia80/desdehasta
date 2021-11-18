@@ -87,6 +87,7 @@ public class AgendaDeEventosActivity extends AppCompatActivity {
                         fecha.setText(strDate);
                     }
                 },anio,mes,dia);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
 
             }
@@ -104,6 +105,9 @@ public class AgendaDeEventosActivity extends AppCompatActivity {
                         calendar.set(Calendar.MINUTE,m);
 
                         hora.setText(String.format("%02d:%02d",h,m));
+                        if (calendar.getTimeInMillis() < Calendar.getInstance().getTimeInMillis()){
+                            Toast.makeText(AgendaDeEventosActivity.this, "No puede elegir un horario que ya ocurrio!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 },hora_reloj,minutos,true);
                 timePickerDialog.show();
@@ -115,6 +119,9 @@ public class AgendaDeEventosActivity extends AppCompatActivity {
         btn_guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (calendar.getTimeInMillis() < Calendar.getInstance().getTimeInMillis()){
+                    Toast.makeText(AgendaDeEventosActivity.this, "No puede elegir un horario que ya ocurrio!", Toast.LENGTH_SHORT).show();
+                }else{
 
                 String tag = generarKey();
                 Long Alerttime = (calendar.getTimeInMillis() - System.currentTimeMillis());
@@ -126,6 +133,8 @@ public class AgendaDeEventosActivity extends AppCompatActivity {
                 Toast.makeText(AgendaDeEventosActivity.this, "Alarma Agendada!", Toast.LENGTH_SHORT).show();
 
             }
+            }
+
         });
         btn_eliminar.setOnClickListener(new View.OnClickListener() {
             @Override

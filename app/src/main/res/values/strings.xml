@@ -43,4 +43,20 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
+
+    <!--Nombres de las card del layout principal main-->
+    <string name="main_circuito">Circuitos</string>
+    <string name="main_detalles_circuito">Puedes crear un recorrido de inicio a fin.</string>
+
+    <string name="main_iniciar_circuito">Iniciar Circuito</string>
+    <string name="main_detalles_iniciar_circuito">Te permite seleccionar un recorrido ya armado y comenzar a utilizarlo.</string>
+
+    <string name="main_calendario">Agendar</string>
+    <string name="main_detalles_calendario">Puedes agendar una fecha y horario con recordatorio para tus futuras salidas</string>
+
+    <string name="main_tiendas_bike">Tiendas Bikers</string>
+    <string name="main_detalles_tiendas">Puedes ver informacion de las tiendas de bicicletas de la ciudad de buenos aires</string>
+
+    <string name="main_comenzar">Comenzar</string>
+
 </resources>
