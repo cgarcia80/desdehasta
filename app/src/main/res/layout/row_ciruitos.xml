@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
  <androidx.cardview.widget.CardView
-     android:backgroundTint="@color/green"
+     android:backgroundTint="@color/Light_Blue"
      app:cardCornerRadius="15dp"
      android:layout_margin="10dp"
 
