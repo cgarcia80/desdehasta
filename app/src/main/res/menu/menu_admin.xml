@@ -4,17 +4,17 @@
 
     <item
         android:id="@+id/menu_admin"
-        android:icon="@drawable/ic_baseline_support_agent_24"
+        android:icon="@drawable/img_admin"
         android:title="@string/menu_admin"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/about"
         android:icon="@android:drawable/ic_dialog_info"
         android:title="@string/menu_acerca_de"
-        app:showAsAction="withText"/>
+        app:showAsAction="never"/>
     <item
         android:id="@+id/logout"
         android:icon="@android:drawable/ic_lock_power_off"
         android:title="@string/menu_cerrar_sesion"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="never"/>
 </menu>

@@ -6,7 +6,7 @@
         android:id="@+id/about"
         android:icon="@android:drawable/ic_dialog_info"
         android:title="@string/menu_acerca_de"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="never"/>
     <item
         android:id="@+id/logout"
         android:icon="@android:drawable/ic_lock_power_off"
