@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         circuitos=findViewById(R.id.layout1);
         grupos=findViewById(R.id.layout2);
         agenda=findViewById(R.id.layout3);
@@ -144,9 +143,18 @@ public class MainActivity extends AppCompatActivity{
         return ANONYMOUS;
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_inicio,menu);
+        FirebaseUser user = mFirebaseAuth.getCurrentUser();
+
+        if (user != null && user.getPhotoUrl() != null) {
+           if(user.getUid().equals("s0T9trdzZMZhRPAZcBCSQ9o3SCp2")||user.getUid().equals("sQDi69Et8fbF6k3MweeR8Q26LZp1")||user.getUid().equals("9T4G4cmJq8XTBIAopCp2dgn44Bu1"))
+               getMenuInflater().inflate(R.menu.menu_admin,menu);
+            else
+               getMenuInflater().inflate(R.menu.menu_inicio,menu);
+        }
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -163,6 +171,10 @@ public class MainActivity extends AppCompatActivity{
             case R.id.about:
                 Intent intent = new Intent(this, AboutActivity.class);
                 startActivity(intent);
+                return true;
+            case R.id.menu_admin:
+                Intent intent2 = new Intent(this, AdministratorActivity.class);
+                startActivity(intent2);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
