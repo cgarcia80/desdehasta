@@ -58,5 +58,6 @@
     <string name="main_detalles_tiendas">Puedes ver informacion de las tiendas de bicicletas de la ciudad de buenos aires</string>
 
     <string name="main_comenzar">Comenzar</string>
+    <string name="spinnerDefaultDircuito">-Seleccione su circuito-</string>
 
 </resources>

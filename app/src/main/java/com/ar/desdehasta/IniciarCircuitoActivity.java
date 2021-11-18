@@ -43,7 +43,9 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
     private ArrayList<String> arrayList =new ArrayList<>();
     private String lat;
     private String lng;
-    String valor="-Seleccionar Circuito-";
+    String circuito;
+
+    String valor="-Seleccione su circuito-";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,15 +64,21 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
         navigation_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!circuito.contains(getString(R.string.spinnerDefaultDircuito))) {
 
-                Uri gmmIntentUri = Uri.parse("google.navigation:q="+lat+","+lng+"&mode=b");
+                    Uri gmmIntentUri = Uri.parse("google.navigation:q=" + lat + "," + lng + "&mode=b");
 
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                mapIntent.setPackage("com.google.android.apps.maps");
-                startActivity(mapIntent);
-
-                if(mapIntent.resolveActivity(getPackageManager())!=null){
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                    mapIntent.setPackage("com.google.android.apps.maps");
                     startActivity(mapIntent);
+
+                    if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(mapIntent);
+                    }
+                }
+                else{
+                    Toast.makeText(IniciarCircuitoActivity.this, "Debe seleccionar un circuito!", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
@@ -87,7 +95,7 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull @com.google.firebase.database.annotations.NotNull DataSnapshot snapshot) {
                 arrayList.clear();
-                arrayList.add("-Seleccionar Circuito-");
+                arrayList.add(getString(R.string.spinnerDefaultDircuito));
                 for (DataSnapshot item: snapshot.getChildren()){
                     String nombre=item.child("nombre").getValue(String.class);
                      arrayList.add(nombre);
@@ -104,6 +112,8 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         String item = parent.getSelectedItem().toString();
                         String s =item;
+                        circuito = s;
+
                        // ver.setText(s);
 
                         DatabaseReference n1= firebaseDatabase.getReference();

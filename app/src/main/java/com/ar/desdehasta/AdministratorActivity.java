@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
-public class AdministratorActivity extends AppCompatActivity {
+public class
+AdministratorActivity extends AppCompatActivity {
     private LinearLayout circuitos;
     private LinearLayout store;
 

@@ -7,6 +7,7 @@ import androidx.work.WorkManager;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -123,15 +124,22 @@ public class AgendaDeEventosActivity extends AppCompatActivity {
                     Toast.makeText(AgendaDeEventosActivity.this, "No puede elegir un horario que ya ocurrio!", Toast.LENGTH_SHORT).show();
                 }else{
 
-                String tag = generarKey();
-                Long Alerttime = (calendar.getTimeInMillis() - System.currentTimeMillis());
-                int random = (int)(Math.random() * 50 + 1);
+                    if(!circuito.contains(getString(R.string.spinnerDefaultDircuito))) {
+                        String tag = generarKey();
+                        Long Alerttime = (calendar.getTimeInMillis() - System.currentTimeMillis());
+                        int random = (int) (Math.random() * 50 + 1);
 
-                Data data = guardarData("Hora del Circuito", circuito ,random);
-                WorkManagerNotificacion.GuardarNotificacion(Alerttime,data,"tag1");
+                        Data data = guardarData("Hora del Circuito", circuito, random);
+                        WorkManagerNotificacion.GuardarNotificacion(Alerttime, data, "tag1");
 
-                Toast.makeText(AgendaDeEventosActivity.this, "Alarma Agendada!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AgendaDeEventosActivity.this, "Alarma Agendada! " + circuito.toString(), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(v.getContext(), MainActivity.class);
+                        startActivityForResult(intent, 0);
 
+                    }else{
+                        Toast.makeText(AgendaDeEventosActivity.this, "Debe seleccionar un circuito!", Toast.LENGTH_SHORT).show();
+
+                    }
             }
             }
 
@@ -156,7 +164,7 @@ public class AgendaDeEventosActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 arrayList.clear();
-                arrayList.add("-Seleccione su circuito-");
+                arrayList.add(getString(R.string.spinnerDefaultDircuito));
                 for (DataSnapshot item: snapshot.getChildren()){
                     String nombre=item.child("nombre").getValue(String.class);
                     // int kilometros=item.child("kilometros").getValue(Integer.class);
