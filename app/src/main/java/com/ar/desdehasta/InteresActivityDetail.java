@@ -32,12 +32,12 @@ public class InteresActivityDetail extends AppCompatActivity {
         tvUrl = findViewById(R.id.tv_web);
 
         tvNombre.setText(element.getNombre());
-        tvDireccion.setText("Direccion: "+element.getDireccion());
+        tvDireccion.setText(element.getDireccion());
         //tvBarrio.setText("Barrio: "+element.getBarrio());
         if (element.getTelefono().equalsIgnoreCase("null"))
-            tvCall.setText("Tel: No posee numero telefonico");
+            tvCall.setText("No posee numero telefonico");
         else
-            tvCall.setText("Tel: "+ element.getTelefono());
+            tvCall.setText(element.getTelefono());
 
         if (element.getWeb().equalsIgnoreCase("null"))
             tvUrl.setText("Sin pagina web");
