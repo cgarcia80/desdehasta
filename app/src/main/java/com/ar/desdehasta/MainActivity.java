@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity{
         if (user != null && user.getPhotoUrl() != null) {
 
    /*         if(user.getUid().equals("s0T9trdzZMZhRPAZcBCSQ9o3SCp2")||user.getUid().equals("sQDi69Et8fbF6k3MweeR8Q26LZp1")||user.getUid().equals("9T4G4cmJq8XTBIAopCp2dgn44Bu1")) {
-                Toast.makeText(this, "usuarioo..ADMIN....." + user.getDisplayName() + "- id --" + user.getUid(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "usuarioo..ADMIN....." + user.getDisplayName() + "- id --" + user.getUid(), Toast.LENGTH_SHORT).show();
                 ImageButton resetButton=(ImageButton)findViewById(R.id.admin); resetButton.setVisibility(View.VISIBLE);
                 resetButton.setOnClickListener(new View.OnClickListener() {
                     @Override
