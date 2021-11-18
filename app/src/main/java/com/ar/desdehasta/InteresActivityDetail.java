@@ -26,14 +26,14 @@ public class InteresActivityDetail extends AppCompatActivity {
         Store element = (Store) getIntent().getSerializableExtra("ListElement");
         tvNombre = findViewById(R.id.tvNombre);
         tvDireccion = findViewById(R.id.tvDireccion);
-        tvBarrio = findViewById(R.id.tvBarrio);
+        //tvBarrio = findViewById(R.id.tvBarrio);
         tvCall = findViewById(R.id.tv_call);
         tvWeb = findViewById(R.id.tv_web);
         tvUrl = findViewById(R.id.tv_web);
 
         tvNombre.setText(element.getNombre());
         tvDireccion.setText("Direccion: "+element.getDireccion());
-        tvBarrio.setText("Barrio: "+element.getBarrio());
+        //tvBarrio.setText("Barrio: "+element.getBarrio());
         if (element.getTelefono().equalsIgnoreCase("null"))
             tvCall.setText("Tel: No posee numero telefonico");
         else

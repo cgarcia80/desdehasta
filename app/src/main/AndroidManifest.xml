@@ -25,7 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AdministratorActivity" />
+        <activity
+            android:name=".AdministratorActivity"
+            android:label="@string/menu_admin"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".AboutActivity"
             android:exported="false"
@@ -69,7 +72,7 @@
             android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".DetalleCircuito"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".ListadoCircuitosActivity"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/inicio"

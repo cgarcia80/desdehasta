@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
         android:orientation="vertical"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="130dp"
         android:elevation="8dp"
         android:background="@color/Light_Blue">
         <RelativeLayout
@@ -151,7 +151,7 @@
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
         android:orientation="vertical"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="260dp"
         android:elevation="8dp"
         android:background="@color/Light_Blue">
         <RelativeLayout
@@ -219,7 +219,7 @@
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
         android:orientation="vertical"
-        android:layout_marginTop="450dp"
+        android:layout_marginTop="390dp"
         android:elevation="8dp"
         android:background="@color/Light_Blue">
         <RelativeLayout
@@ -274,7 +274,7 @@
                 android:layout_centerVertical="false"
                 android:layout_marginEnd="4dp"
                 android:layout_marginRight="16dp"
-                android:text="@string/main_tiendas_bike"
+                android:text="@string/main_comenzar"
                 android:textSize="10dp"
                 android:textStyle="bold"></TextView>
         </RelativeLayout>
