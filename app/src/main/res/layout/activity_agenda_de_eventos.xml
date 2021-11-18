@@ -45,7 +45,7 @@
             android:padding="10dp"
             android:src="@drawable/calendar_date_event_month_icon"
             android:text="Seleccionar fecha"
-            android:textColor="#fff" />
+            android:textColor="#fff"/>
 
     </LinearLayout>
 

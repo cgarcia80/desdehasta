@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Desdehasta">
         <activity
+            android:screenOrientation="portrait"
             android:name=".SplashscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
@@ -26,54 +27,67 @@
             </intent-filter>
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".AdministratorActivity"
             android:label="@string/menu_admin"
             android:parentActivityName=".MainActivity"/>
         <activity
+            android:screenOrientation="portrait"
             android:name=".AboutActivity"
             android:exported="false"
             android:label="@string/about"
             android:parentActivityName=".MainActivity" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".InteresActivityDetail"
             android:exported="false"
             android:label="@string/interesDetalles"
             android:parentActivityName=".InteresActivity" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".InteresActivity"
             android:exported="false"
             android:label="@string/interes"
             android:parentActivityName=".MainActivity" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".AgendaDeEventosActivity"
             android:label="@string/agendar_circuitos"
             android:parentActivityName=".MainActivity"/>
         <activity
+            android:screenOrientation="portrait"
             android:name=".IniciarCircuitoActivity"
             android:label="@string/iniciar_circuito"
             android:parentActivityName=".MainActivity"/>
         <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar" -->
         <activity
+            android:screenOrientation="portrait"
             android:name=".AltaGrupoActivity"
             android:parentActivityName=".MainActivity"/>
         <activity
+            android:screenOrientation="portrait"
             android:name=".AltaStoreActivity"
             android:parentActivityName=".MainActivity"/>
         <activity
+            android:screenOrientation="portrait"
             android:name=".LoginActivity"
             android:label="@string/inicio_sesion" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ListadoCircuitosActivity"
             android:label="@string/circuitos"
             android:parentActivityName=".MainActivity"/>
         <activity
+            android:screenOrientation="portrait"
             android:name=".AltaCircuitoActivity"
             android:label="@string/crear_circuito"
             android:parentActivityName=".MainActivity"/>
         <activity
+            android:screenOrientation="portrait"
             android:name=".DetalleCircuito"
             android:parentActivityName=".ListadoCircuitosActivity"/>
         <activity
+            android:screenOrientation="portrait"
             android:name=".MainActivity"
             android:label="@string/inicio"
             tools:ignore="Instantiatable">
