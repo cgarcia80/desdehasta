@@ -63,17 +63,6 @@
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="false"
-                android:layout_marginEnd="4dp"
-                android:layout_marginRight="16dp"
-                android:text="@string/main_comenzar"
-                android:textSize="10dp"
-                android:textStyle="bold"></TextView>
         </RelativeLayout>
     </LinearLayout>
 
@@ -130,17 +119,6 @@
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="false"
-                android:layout_marginEnd="4dp"
-                android:layout_marginRight="16dp"
-                android:text="@string/main_comenzar"
-                android:textSize="10dp"
-                android:textStyle="bold"></TextView>
         </RelativeLayout>
 
     </LinearLayout>
@@ -198,17 +176,6 @@
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="false"
-                android:layout_marginEnd="4dp"
-                android:layout_marginRight="16dp"
-                android:text="@string/main_comenzar"
-                android:textSize="10dp"
-                android:textStyle="bold"></TextView>
         </RelativeLayout>
 
     </LinearLayout>
@@ -266,17 +233,6 @@
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="false"
-                android:layout_marginEnd="4dp"
-                android:layout_marginRight="16dp"
-                android:text="@string/main_comenzar"
-                android:textSize="10dp"
-                android:textStyle="bold"></TextView>
         </RelativeLayout>
 
     </LinearLayout>
