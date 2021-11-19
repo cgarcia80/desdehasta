@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ar.desdehasta.databinding.ActivityLoginBinding;
@@ -12,6 +14,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -25,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding mBinding;
     private GoogleSignInClient mSignInClient;
+    SignInButton signInButton;
 
     // Firebase instance variables
     private FirebaseAuth mFirebaseAuth;
@@ -46,6 +50,10 @@ public class LoginActivity extends AppCompatActivity {
         mSignInClient = GoogleSignIn.getClient(this, gso);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
+
+        signInButton = (SignInButton) findViewById(R.id.btn_login);
+        String nameBtn = "Inicie sesion con google";
+        setGooglePlusButtonText(signInButton, nameBtn);
     }
 
     private void signIn() {
@@ -77,5 +85,18 @@ public class LoginActivity extends AppCompatActivity {
                 })
                 .addOnFailureListener(this, e -> Toast.makeText(LoginActivity.this, "Authenticacion fallida.",
                         Toast.LENGTH_SHORT).show());
+    }
+
+    private void setGooglePlusButtonText(SignInButton signInButton, String buttonText) {
+        // Find the TextView that is inside of the SignInButton and set its text
+        for (int i = 0; i < signInButton.getChildCount(); i++) {
+            View v = signInButton.getChildAt(i);
+
+            if (v instanceof TextView) {
+                TextView tv = (TextView) v;
+                tv.setText(buttonText);
+                return;
+            }
+        }
     }
 }
