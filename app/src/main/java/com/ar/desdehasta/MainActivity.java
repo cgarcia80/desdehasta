@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity{
         actionBar.setIcon(R.drawable.ic_baseline_account_circle_24);
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
         if(signInAccount != null)
-            actionBar.setTitle(" " + signInAccount.getGivenName());
+            actionBar.setTitle(" Bienvenido " + signInAccount.getGivenName());
         else
             actionBar.setTitle("Inicio");
     }
