@@ -10,17 +10,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ar.desdehasta.pojo.Circuito;
-import com.ar.desdehasta.pojo.Grupo;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,7 +26,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class IniciarCircuitoActivity extends AppCompatActivity {
     private FloatingActionButton navigation_btn;
@@ -41,8 +36,10 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
     private Spinner spinner;
     private TextView ver;
     private ArrayList<String> arrayList =new ArrayList<>();
-    private String lat;
-    private String lng;
+    private String lat_origen;
+    private String lng_origen;
+    private String lat_dest;
+    private String lng_dest;
     String circuito;
 
     String valor="-Seleccione su circuito-";
@@ -66,7 +63,9 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(!circuito.contains(getString(R.string.spinnerDefaultDircuito))) {
 
-                    Uri gmmIntentUri = Uri.parse("google.navigation:q=" + lat + "," + lng + "&mode=b");
+
+                    Uri gmmIntentUri = Uri.parse("http://maps.google.com/maps?hl=en&saddr=" + lat_origen + "," + lng_origen + "&daddr=" + lat_dest + "," + lng_dest + "&mode=driving");
+                    //Uri gmmIntentUri = Uri.parse("google.navigation:q=" + lat_dest + "," + lng_dest + "&mode=b");
 
                     Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                     mapIntent.setPackage("com.google.android.apps.maps");
@@ -126,8 +125,11 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
                                 for(DataSnapshot chidsSnapshot: snapshot.getChildren()){
                                     Circuito circuito = chidsSnapshot.getValue(Circuito.class);
                                     //String catekey= chidsSnapshot.getKey();
-                                    lat=String.valueOf(circuito.getLatitude_des());
-                                    lng=String.valueOf(circuito.getLongitude_des());
+                                    lat_origen =String.valueOf(circuito.getLatitude_ori());
+                                    lng_origen =String.valueOf(circuito.getLongitude_des());
+                                    lat_dest =String.valueOf(circuito.getLatitude_des());
+                                    lng_dest =String.valueOf(circuito.getLongitude_des());
+
 
                                     ver.setText(circuito.getNombre());
 
