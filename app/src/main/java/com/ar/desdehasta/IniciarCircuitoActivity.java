@@ -1,9 +1,15 @@
 package com.ar.desdehasta;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +21,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ar.desdehasta.pojo.Circuito;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -27,19 +38,23 @@ import com.google.firebase.database.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class IniciarCircuitoActivity extends AppCompatActivity {
-    private FloatingActionButton navigation_btn;
+public class IniciarCircuitoActivity extends AppCompatActivity  {
+    private FusedLocationProviderClient ubicacion;
 
+
+    private FloatingActionButton navigation_btn;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
     private Spinner spinner;
     private TextView ver;
     private ArrayList<String> arrayList = new ArrayList<>();
-    private double lat_origen;
-    private double lng_origen;
-    private double lat_dest;
-    private double lng_dest;
+    private Double lat_origen;
+    private Double lng_origen;
+    private Double lat_dest;
+    private Double lng_dest;
+    private String lat_actual;
+    private String lng_actual;
     String circuito;
     String dirOrigen;
     String dirDestino;
@@ -64,32 +79,89 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if(ContextCompat.checkSelfPermission(IniciarCircuitoActivity.this,
+                        Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
+                    //Toast.makeText(this,"tenemos permisos",Toast.LENGTH_SHORT).show();
 
-                if(!circuito.contains(getString(R.string.spinnerDefaultDircuito))) {
+                }else{
+                    ActivityCompat.requestPermissions(IniciarCircuitoActivity.this,new String[]{
+                            Manifest.permission.ACCESS_COARSE_LOCATION,
+                            Manifest.permission.ACCESS_FINE_LOCATION},1);
+                }
+                ubicacion= LocationServices.getFusedLocationProviderClient(IniciarCircuitoActivity.this);
+                ubicacion.getLastLocation().addOnSuccessListener(IniciarCircuitoActivity.this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        if(location !=null){
+                            lat_actual=String.valueOf(location.getLatitude());
+                            lng_actual=String.valueOf(location.getLongitude());
+                            //Toast.makeText(IniciarCircuitoActivity.this, "Latitud"+latitud+"Longitud"+longitud, Toast.LENGTH_SHORT).show();
 
-                    //String url="http://maps.google.com/maps?hl=en&saddr=" + String.valueOf(lat_origen) +"," + String.valueOf(lng_origen) +"&daddr=" + String.valueOf(lat_dest)+"," +String.valueOf(lng_dest)+"&mode=b";
-                    //String url="http://www.google.com/maps/dir/"+ lat_origen +"," + lng_origen+"/" + lat_dest+"," +lng_dest;
-                    //String url="https://www.google.com/maps/dir/?api=1&origin="+ lat_origen + "%2C" + lng_origen + "&destination=" + lat_dest + "%2C" +lng_dest + "&travelmode=biclycling";
-                    String url="https://www.google.com/maps/dir/?api=1&origin="+dirOrigen+"&destination="+dirDestino+"&mode=b";
-                    Uri gmmIntentUri = Uri.parse(url);
+                            String actualcaracter = lat_actual.toString().substring(0, 6);
+                            String origencaracter = lat_origen.toString().substring(0, 6);
 
-                    //Uri gmmIntentUri = Uri.parse("google.navigation:q=" + lat_dest + "," + lng_dest + "&mode=b");
+                        Log.i("ver",actualcaracter+" "+origencaracter);
+                    if(!circuito.contains(getString(R.string.spinnerDefaultDircuito))) {
 
-                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                    mapIntent.setPackage("com.google.android.apps.maps");
-                    startActivity(mapIntent);
+                        if(actualcaracter.equals(origencaracter) ){
 
-                    if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                        //String url="http://maps.google.com/maps?hl=en&saddr=" + String.valueOf(lat_origen) +"," + String.valueOf(lng_origen) +"&daddr=" + String.valueOf(lat_dest)+"," +String.valueOf(lng_dest)+"&mode=b";
+                        //String url="http://www.google.com/maps/dir/"+ lat_origen +"," + lng_origen+"/" + lat_dest+"," +lng_dest;
+                        //String url="https://www.google.com/maps/dir/?api=1&origin="+ lat_origen + "%2C" + lng_origen + "&destination=" + lat_dest + "%2C" +lng_dest + "&travelmode=biclycling";
+                        String url="https://www.google.com/maps/dir/?api=1&origin="+dirOrigen+"&destination="+dirDestino+"&mode=b";
+                        Uri gmmIntentUri = Uri.parse(url);
+
+                        //Uri gmmIntentUri = Uri.parse("google.navigation:q=" + lat_dest + "," + lng_dest + "&mode=b");
+
+                        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                        mapIntent.setPackage("com.google.android.apps.maps");
                         startActivity(mapIntent);
+
+                        if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                            startActivity(mapIntent);
+                        }
+                    }
+                    else{
+                        Toast.makeText(IniciarCircuitoActivity.this, "Debe estar en la ubicacion inicial del circuito!", Toast.LENGTH_SHORT).show();
+
                     }
                 }
                 else{
                     Toast.makeText(IniciarCircuitoActivity.this, "Debe seleccionar un circuito!", Toast.LENGTH_SHORT).show();
 
                 }
+                        }
+                    }
+                });
+            }
+
+        });
+    }
+
+    private void dameUbicacion() {
+        if(ContextCompat.checkSelfPermission(IniciarCircuitoActivity.this,
+                Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
+            //Toast.makeText(this,"tenemos permisos",Toast.LENGTH_SHORT).show();
+
+        }else{
+            ActivityCompat.requestPermissions(IniciarCircuitoActivity.this,new String[]{
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION},1);
+        }
+        ubicacion= LocationServices.getFusedLocationProviderClient(IniciarCircuitoActivity.this);
+        ubicacion.getLastLocation().addOnSuccessListener(IniciarCircuitoActivity.this, new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if(location !=null){
+                    lat_actual=String.valueOf(location.getLatitude());
+                    lng_actual=String.valueOf(location.getLongitude());
+                    //Toast.makeText(IniciarCircuitoActivity.this, "Latitud"+latitud+"Longitud"+longitud, Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
     }
+
     private void inicializarFirebase() {
         FirebaseApp.initializeApp(this);
         firebaseDatabase = FirebaseDatabase.getInstance();
