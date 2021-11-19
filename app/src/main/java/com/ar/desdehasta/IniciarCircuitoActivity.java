@@ -35,7 +35,7 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
 
     private Spinner spinner;
     private TextView ver;
-    private ArrayList<String> arrayList =new ArrayList<>();
+    private ArrayList<String> arrayList = new ArrayList<>();
     private double lat_origen;
     private double lng_origen;
     private double lat_dest;
@@ -44,31 +44,33 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
     String dirOrigen;
     String dirDestino;
 
-    String valor="-Seleccione su circuito-";
+    String valor = "-Seleccione su circuito-";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iniciar_circuito);
 
-        spinner= findViewById(R.id.spinnerNavegacion);
-        ver=findViewById(R.id.textViewSeleccionCircutio);
+        spinner = findViewById(R.id.spinnerNavegacion);
+        ver = findViewById(R.id.textViewSeleccionCircutio);
         inicializarFirebase();
-        Log.i("ver",valor);
         valor = getIntent().getStringExtra("circuito");
         showDataSpinner();
 
-        navigation_btn=findViewById(R.id.navegar);
+        navigation_btn = findViewById(R.id.navegar);
 
 
         navigation_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 if(!circuito.contains(getString(R.string.spinnerDefaultDircuito))) {
 
                     //String url="http://maps.google.com/maps?hl=en&saddr=" + String.valueOf(lat_origen) +"," + String.valueOf(lng_origen) +"&daddr=" + String.valueOf(lat_dest)+"," +String.valueOf(lng_dest)+"&mode=b";
                     //String url="http://www.google.com/maps/dir/"+ lat_origen +"," + lng_origen+"/" + lat_dest+"," +lng_dest;
                     //String url="https://www.google.com/maps/dir/?api=1&origin="+ lat_origen + "%2C" + lng_origen + "&destination=" + lat_dest + "%2C" +lng_dest + "&travelmode=biclycling";
-                    String url="https://www.google.com/maps/dir/?api=1&origin="+dirOrigen+"&destination="+dirDestino+"&dir_action=navigate";
+                    String url="https://www.google.com/maps/dir/?api=1&origin="+dirOrigen+"&destination="+dirDestino+"&mode=b";
                     Uri gmmIntentUri = Uri.parse(url);
 
                     //Uri gmmIntentUri = Uri.parse("google.navigation:q=" + lat_dest + "," + lng_dest + "&mode=b");
