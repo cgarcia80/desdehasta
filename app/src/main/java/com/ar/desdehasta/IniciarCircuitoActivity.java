@@ -36,10 +36,10 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
     private Spinner spinner;
     private TextView ver;
     private ArrayList<String> arrayList =new ArrayList<>();
-    private String lat_origen;
-    private String lng_origen;
-    private String lat_dest;
-    private String lng_dest;
+    private double lat_origen;
+    private double lng_origen;
+    private double lat_dest;
+    private double lng_dest;
     String circuito;
 
     String valor="-Seleccione su circuito-";
@@ -63,8 +63,9 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(!circuito.contains(getString(R.string.spinnerDefaultDircuito))) {
 
-
-                    Uri gmmIntentUri = Uri.parse("http://maps.google.com/maps?hl=en&saddr=" + lat_origen + "," + lng_origen + "&daddr=" + lat_dest + "," + lng_dest + "&mode=driving");
+                    //String url="http://maps.google.com/maps?hl=en&saddr=" + String.valueOf(lat_origen) +"," + String.valueOf(lng_origen) +"&daddr=" + String.valueOf(lat_dest)+"," +String.valueOf(lng_dest)+"&mode=b";
+                    String url="http://www.google.com/maps/dir/"+ lat_origen +"," + lng_origen+"/" + lat_dest+"," +lng_dest;
+                    Uri gmmIntentUri = Uri.parse(url);
                     //Uri gmmIntentUri = Uri.parse("google.navigation:q=" + lat_dest + "," + lng_dest + "&mode=b");
 
                     Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
@@ -125,11 +126,15 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
                                 for(DataSnapshot chidsSnapshot: snapshot.getChildren()){
                                     Circuito circuito = chidsSnapshot.getValue(Circuito.class);
                                     //String catekey= chidsSnapshot.getKey();
-                                    lat_origen =String.valueOf(circuito.getLatitude_ori());
+                                    /*lat_origen =String.valueOf(circuito.getLatitude_ori());
                                     lng_origen =String.valueOf(circuito.getLongitude_des());
                                     lat_dest =String.valueOf(circuito.getLatitude_des());
                                     lng_dest =String.valueOf(circuito.getLongitude_des());
-
+                                    */
+                                    lat_origen =circuito.getLatitude_ori();
+                                    lng_origen =circuito.getLongitude_des();
+                                    lat_dest =circuito.getLatitude_des();
+                                    lng_dest =circuito.getLongitude_des();
 
                                     ver.setText(circuito.getNombre());
 

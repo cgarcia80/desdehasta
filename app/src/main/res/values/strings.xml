@@ -28,8 +28,8 @@
     <string name="inicio_sesion">Iniciar Sesion</string>
     <string name="crear_circuito">Crear Circuito</string>
     <string name="circuitos">Circuitos</string>
-    <string name="interes">Bicileterias</string>
-    <string name="interesDetalles">Bicileteria</string>
+    <string name="interes">Bicicleterias</string>
+    <string name="interesDetalles">Bicicleterias</string>
     <string name="hora_circuito">Hora del Circuito</string>
     <string name="fecha_del_circuito">Fecha del Ciruito</string>
 
@@ -45,8 +45,8 @@
 
 
     <!--Nombres de las card del layout principal main-->
-    <string name="main_circuito">Circuitos</string>
-    <string name="main_detalles_circuito">Puedes crear un recorrido de inicio a fin.</string>
+    <string name="main_circuito">Listado de Circuitos</string>
+    <string name="main_detalles_circuito">Puedes seleccionar un recorrido de inicio a fin.</string>
 
     <string name="main_iniciar_circuito">Iniciar Circuito</string>
     <string name="main_detalles_iniciar_circuito">Te permite seleccionar un recorrido ya armado y comenzar a utilizarlo.</string>
