@@ -11,9 +11,26 @@ public class Circuito implements Serializable {
         private double longitude_ori;
         private double latitude_des;
         private double longitude_des;
+        private String dirOrigen;
+        private String dirDestino;
 
+    public String getDirOrigen() {
+        return dirOrigen;
+    }
 
-    public Circuito(String uid, String nombre, double kilometros, double tiempo, double latitude_ori, double longitude_ori, double latitude_des, double longitude_des) {
+    public void setDirOrigen(String dirOrigen) {
+        this.dirOrigen = dirOrigen;
+    }
+
+    public String getDirDestino() {
+        return dirDestino;
+    }
+
+    public void setDirDestino(String dirDestino) {
+        this.dirDestino = dirDestino;
+    }
+
+    public Circuito(String uid, String nombre, double kilometros, double tiempo, double latitude_ori, double longitude_ori, double latitude_des, double longitude_des, String dirOri, String dirDes) {
         this.uid = uid;
         this.nombre = nombre;
         this.kilometros = kilometros;
@@ -22,6 +39,8 @@ public class Circuito implements Serializable {
         this.longitude_ori = longitude_ori;
         this.latitude_des = latitude_des;
         this.longitude_des = longitude_des;
+        this.dirOrigen = dirOri;
+        this.dirDestino=dirDes;
     }
 
 

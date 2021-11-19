@@ -1,9 +1,7 @@
 package com.ar.desdehasta
 
-import android.Manifest
 import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -101,10 +99,13 @@ class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
             val lng_ori: Double = mOrigenLatLng!!.longitude
             val lat_dest: Double = mDestinoLatLng!!.latitude
             val lng_dest: Double = mDestinoLatLng!!.longitude
-
+            val datoOrigen: String=tvOrigen.text.toString()
+            val datoDestino: String=tvDestino.text.toString()
+            val origen: String = datoOrigen.substring(datoOrigen.indexOf(":") + 1)
+            val destino: String = datoDestino.substring(datoDestino.indexOf(":") + 1)
             Log.i("Prueba", distancia.toString() + tiempo.toString())
 
-            val data: Circuito= Circuito(uid,nombre,distancia,tiempo, lat_ori, lng_ori,lat_dest,lng_dest)
+            val data: Circuito= Circuito(uid,nombre,distancia,tiempo, lat_ori, lng_ori,lat_dest,lng_dest,origen,destino)
             //myRef.push().setValue(data)
             myRef.child(uid).setValue(data);
 
@@ -122,13 +123,13 @@ class AltaCircuitoActivity : AppCompatActivity(), OnMapReadyCallback {
             ti_nombreCircuito.error = "Debe indicar un nombre de circuito!"
             retorno=false
         }
-        if(tvOrigen.toString().isEmpty() ){
+        if(tvOrigen.text.toString().isEmpty() ){
             Log.i("Prueba", "origen")
             tvOrigen.requestFocus()
             tvOrigen.setError("Debe indicar un Origen de circuito!")
             retorno=false
         }
-        if(tvDestino.toString().isEmpty() ){
+        if(tvDestino.text.toString().isEmpty() ){
             Log.i("Prueba", "origen")
 
             tvDestino.requestFocus()

@@ -41,6 +41,8 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
     private double lat_dest;
     private double lng_dest;
     String circuito;
+    String dirOrigen;
+    String dirDestino;
 
     String valor="-Seleccione su circuito-";
     @Override
@@ -64,8 +66,11 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
                 if(!circuito.contains(getString(R.string.spinnerDefaultDircuito))) {
 
                     //String url="http://maps.google.com/maps?hl=en&saddr=" + String.valueOf(lat_origen) +"," + String.valueOf(lng_origen) +"&daddr=" + String.valueOf(lat_dest)+"," +String.valueOf(lng_dest)+"&mode=b";
-                    String url="http://www.google.com/maps/dir/"+ lat_origen +"," + lng_origen+"/" + lat_dest+"," +lng_dest;
+                    //String url="http://www.google.com/maps/dir/"+ lat_origen +"," + lng_origen+"/" + lat_dest+"," +lng_dest;
+                    //String url="https://www.google.com/maps/dir/?api=1&origin="+ lat_origen + "%2C" + lng_origen + "&destination=" + lat_dest + "%2C" +lng_dest + "&travelmode=biclycling";
+                    String url="https://www.google.com/maps/dir/?api=1&origin="+dirOrigen+"&destination="+dirDestino+"&dir_action=navigate";
                     Uri gmmIntentUri = Uri.parse(url);
+
                     //Uri gmmIntentUri = Uri.parse("google.navigation:q=" + lat_dest + "," + lng_dest + "&mode=b");
 
                     Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
@@ -135,6 +140,9 @@ public class IniciarCircuitoActivity extends AppCompatActivity {
                                     lng_origen =circuito.getLongitude_des();
                                     lat_dest =circuito.getLatitude_des();
                                     lng_dest =circuito.getLongitude_des();
+                                    dirOrigen=circuito.getDirOrigen();
+                                    dirDestino=circuito.getDirDestino();
+
 
                                     ver.setText(circuito.getNombre());
 
